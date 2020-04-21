@@ -6,3 +6,11 @@ D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Dato
 D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\obj\Debug\Acceso_Datos.csproj.CopyComplete
 D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\obj\Debug\Acceso_Datos.dll
 D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\obj\Debug\Acceso_Datos.pdb
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\bin\Debug\Acceso_Datos.dll
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\bin\Debug\Acceso_Datos.pdb
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\bin\Debug\Entidad.dll
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\bin\Debug\Entidad.pdb
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\obj\Debug\Acceso_Datos.csprojAssemblyReference.cache
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\obj\Debug\Acceso_Datos.csproj.CopyComplete
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\obj\Debug\Acceso_Datos.dll
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Acceso_Datos\obj\Debug\Acceso_Datos.pdb

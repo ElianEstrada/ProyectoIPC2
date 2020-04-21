@@ -8,3 +8,13 @@ D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\obj\
 D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\obj\Debug\Logica.csproj.CopyComplete
 D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\obj\Debug\Logica.dll
 D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\obj\Debug\Logica.pdb
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\bin\Debug\Logica.dll
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\bin\Debug\Logica.pdb
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\bin\Debug\Acceso_Datos.dll
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\bin\Debug\Entidad.dll
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\bin\Debug\Acceso_Datos.pdb
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\bin\Debug\Entidad.pdb
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\obj\Debug\Logica.csproj.CopyComplete
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\obj\Debug\Logica.dll
+\\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Logica\obj\Debug\Logica.pdb
