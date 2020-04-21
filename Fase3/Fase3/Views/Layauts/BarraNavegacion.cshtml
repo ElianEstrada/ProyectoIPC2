@@ -12,25 +12,33 @@
     <div>
         <div>
             <ul id="dropdown1" class="dropdown-content">
-                <li><a href="#!">one</a></li>
+                <li><a href="#!"> Perfil </a></li>
                 <li><a href="#!">two</a></li>
-                <li><a href="#!">three</a></li>
+                <li class="divider"></li>
+                <li> <a href="Index"> Cerrar Sesión </a></li>
+            </ul>
+            <ul id="dp2" class="dropdown-content">
+                <li><a href="Bodega"> Crear Bodega </a></li>
+                <li><a href="#!"> Informes </a></li>
+                <li class="divider"></li>
+                <li> <a href="Index"> Transacciones </a></li>
             </ul>
             <nav>
                 <div class="nav-wrapper blue">
-                    <a href="Home" class="brand-logo">Logo</a>
+                    <a href="Home" class="brand-logo"> ERP SaaS </a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="#">Sass</a></li>
-                        <li><a href="#">Components</a></li>
+                        <li><a class="dropdown-trigger" href="#" data-target="dp2"> Inventario <i class="material-icons right"> arrow_drop_down</i> </a></li>
+                        <li><a href="#"> Components </a></li>
                         <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Modulos<i class="material-icons right">arrow_drop_down</i></a></li>
-                        <li> <a href="Index"> Cerrar Sesión </a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"> Sesión <i class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
                 </div>
             </nav>
 
         </div>
-        @RenderBody()
+        <div class="container">
+            @RenderBody()
+        </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

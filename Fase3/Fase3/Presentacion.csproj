@@ -109,6 +109,7 @@
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Layauts\BarraNavegacion.cshtml" />
     <Content Include="Views\UsuarioOperativo\Home.cshtml" />
+    <Content Include="Views\UsuarioOperativo\Bodega.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
