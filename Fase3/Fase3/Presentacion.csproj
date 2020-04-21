@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BodegaController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\UsuarioOperativoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -109,7 +110,8 @@
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Layauts\BarraNavegacion.cshtml" />
     <Content Include="Views\UsuarioOperativo\Home.cshtml" />
-    <Content Include="Views\UsuarioOperativo\Bodega.cshtml" />
+    <Content Include="Views\Bodega\Bodega.cshtml" />
+    <Content Include="Views\Bodega\Pasillo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

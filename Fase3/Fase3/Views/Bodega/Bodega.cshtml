@@ -11,23 +11,25 @@
         <div class="card">
             <div class="card-content black-text">
                 <span class="card-title"> Crear Bodegas </span>
-                @using (Html.BeginForm("registrarBodega", "UsuarioOperativo", FormMethod.Post))
+                @using (Html.BeginForm("registrarBodega", "Bodega", FormMethod.Post))
                 {
-                    <form>
+                    <form id="MyForm">
                         Código Bodega:
-                        <input name="codigoBodega" placeholder="Código Bodega" type="text" /> 
+                        <input name="codigoBodega" placeholder="Código Bodega" type="text" />
                         Nombre Bodega:
                         <input name="nombreBodega" placeholder="Nombre" type="text" />
                         Descripción:
                         <textarea name="descripcion" rows="2" cols="20"> </textarea>
-                        Dirección Física: 
+                        Dirección Física:
                         <input name="direccion" placeholder="Dirección" type="text" />
                         <button class="btn blue waves-effect waves-light" type="submit">
                             Ingresar
                             <i class="material-icons right">send</i>
                         </button>
+                        <a class="btn green" href="Pasillo"> Agregar Pasillo </a>
                     </form>
                 }
+
             </div>
         </div>
     </div>

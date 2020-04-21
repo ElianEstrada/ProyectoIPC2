@@ -22,12 +22,7 @@ namespace Fase3.Controllers
 
         public ActionResult Bodega()
         {
-            return View();
-        }
-
-        public ActionResult registrarBodega(int codigoBodega, string nombreBodega, string descripcion, string direccion)
-        {
-            return Content("<script> alert('Bodega Registrada') </script>");
+            return Content("<script> window.location.href = '/Bodega/Bodega' </script>");
         }
     }
 }
