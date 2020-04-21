@@ -1,0 +1,5 @@
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Entidad\bin\Debug\Entidad.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Entidad\bin\Debug\Entidad.pdb
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Entidad\obj\Debug\Entidad.csprojAssemblyReference.cache
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Entidad\obj\Debug\Entidad.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Entidad\obj\Debug\Entidad.pdb

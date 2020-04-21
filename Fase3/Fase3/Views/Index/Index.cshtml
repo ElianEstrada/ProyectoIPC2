@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layauts/Encabezado.cshtml";
+}
+
+
+<div class="row">
+    <div class="col m12">
+        <div class="card">
+            <div class="card-content black-text">
+                <span class="card-title"> Iniciar Sesión</span>
+                @using (Html.BeginForm("Login", "Index", FormMethod.Post))
+                {
+                    <form>
+                        Correo Electrónico:
+                        <input name="email" placeholder="Correo Electrónico" type="email" />
+                        Contraseña:
+                        <input name="password" placeholder="Contraseña" type="password" />
+                        Tipo:
+                        <div class="input-field">
+                            <select name="tipo">
+                                <option value="" disabled selected> Elije tu Opción</option>
+                                <option value="1"> Administrador del Sistema </option>
+                                <option value="2"> Administrador de Servicio </option>
+                                <option value="3"> Usuario Operativo</option>
+                            </select>
+                        </div>
+                        <button class="btn blue waves-effect waves-light" type="submit">
+                            Ingresar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+</script>

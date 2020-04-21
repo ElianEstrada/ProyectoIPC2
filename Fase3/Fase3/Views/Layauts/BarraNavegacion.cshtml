@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/materialize.min.css" rel="stylesheet" />
+    <script src="~/Content/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <div>
+            @if (Session["usuarioOperativo"] != null)
+            {
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="#!">one</a></li>
+                    <li><a href="#!">two</a></li>
+                    <li><a href="#!">three</a></li>
+                </ul>
+            }
+            else
+            {
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="#!">Perro</a></li>
+                    <li><a href="#!">Salchicha</a></li>
+                    <li><a href="#!">Árbol</a></li>
+                </ul>
+            }
+            <nav>
+                <div class="nav-wrapper blue">
+                    <a href="Home" class="brand-logo">Logo</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#">Sass</a></li>
+                        <li><a href="#">Components</a></li>
+                        <!-- Dropdown Trigger -->
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Modulos<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li> <a href="Index"> Cerrar Sesión </a></li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+        @RenderBody()
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems);
+        });
+    </script>
+</body>
+</html>
