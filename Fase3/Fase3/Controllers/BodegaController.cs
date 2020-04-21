@@ -22,7 +22,7 @@ namespace Fase3.Controllers
         {
             codigo = codigoBodega;
             return Content("<script> alert('Bodega Registrada'); " +
-                " window.location.href= 'Bodega'</script>");
+                " window.location.href= 'Pasillo'</script>");
         }
 
         public ActionResult Pasillo()
@@ -32,8 +32,20 @@ namespace Fase3.Controllers
 
         public ActionResult registrarPasillo()
         {
-            return Content("<script> alert('"+ codigo + "'); </script>");
+            return Content("<script> alert('Pasillo Creado'); " +
+                "window.location.href= 'Estante' </script>");
         }
+
+        public ActionResult Estante()
+        {
+            return View();
+        }
+
+        public ActionResult registrarEstante()
+        {
+            return Content("<script> alert('Estante Registrado'); </script>");
+        }
+
         public ActionResult Index()
         {
             Session["usuarioOperativo"] = null;
