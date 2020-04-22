@@ -1,4 +1,4 @@
-﻿@model LinkedList<Entidad.Bodega>
+﻿@model LinkedList<Entidad.Pasillo>
 
 @{
     ViewBag.Title = "Estante";
@@ -17,11 +17,11 @@
                     <form id="MyForm">
                         Número de Pasillo:
                         <div class="input-field">
-                            <select name="codigoBodega" required>
-                                <option value="" disabled selected>Elije una Bodega</option>
+                            <select name="numeroPasillo" required>
+                                <option value="" disabled selected>Elije un Pasillo</option>
                                 @foreach (var item in Model)
                                 {
-                                    <option value="@item.idBodega"> @item.idBodega </option>
+                                    <option value="@item.idPasillo"> @item.idPasillo </option>
                                 }
                                 @*<option value="1">1</option>
                                     <option value="2">2</option>*@
@@ -34,7 +34,7 @@
                         Ancho:
                         <input name="ancho" placeholder="Ancho en Metros" type="number" step="0.01" required />
                         Alto:
-                        <input name="alto" placeholder="Aalto en Metros" type="number" step="0.01" required />
+                        <input name="alto" placeholder="Alto en Metros" type="number" step="0.01" required />
                         <button class="btn blue waves-effect waves-light" type="submit">
                             Crear
                             <i class="material-icons right">send</i>

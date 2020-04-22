@@ -13,9 +13,14 @@ namespace Logica
 
         BodegaDA bodegaDA = new BodegaDA();
 
-        public LinkedList<Bodega> idBodegas(string email)
+        public LinkedList<Bodega> idBodegas(int idUsuario)
         {
-            return bodegaDA.listaBodegas(email);
+            return bodegaDA.listaBodegas(idUsuario);
+        }
+
+        public int buscarUsuario (string email)
+        {
+            return bodegaDA.usuarioOperativo(email);
         }
 
     }

@@ -16,14 +16,12 @@ namespace Acceso_Datos
         SqlCommand cmd;
 
 
-        public LinkedList<Bodega> listaBodegas(string emailUsuarioOperativo)
+        public LinkedList<Bodega> listaBodegas(int idUsuario)
         {
             LinkedList<Bodega> bodegas = new LinkedList<Bodega>();
 
             try
             {
-                int idUsuario = usuarioOperativo(emailUsuarioOperativo);
-
                 cmd = new SqlCommand("show_Bodegas", conexion.abrirConexion());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
@@ -64,9 +62,7 @@ namespace Acceso_Datos
 
                 if (reader.Read())
                 {
-                    int idUsuario = int.Parse(reader["fk_usuario"].ToString());
-                    reader.Close();
-                    return idUsuario;
+                    return int.Parse(reader["fk_usuario"].ToString());
                 }
                 else
                 {

@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="BodegaDA.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="EstanteDA.cs" />
+    <Compile Include="NivelDA.cs" />
+    <Compile Include="PasilloDA.cs" />
     <Compile Include="ProductoDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioOperativoDA.cs" />

@@ -12,6 +12,10 @@ namespace Fase3.Controllers
     {
         static int codigo = 0;
         BodegaLogic bodega = new BodegaLogic();
+        PasilloLogic pasillo = new PasilloLogic();
+        EstanteLogic estante = new EstanteLogic();
+        NivelLogic nivel = new NivelLogic();
+
         public ActionResult Home()
         {
             return Content("<script> window.location.href='/UsuarioOperativo/Home' </script>");
@@ -34,8 +38,9 @@ namespace Fase3.Controllers
         public ActionResult Pasillo()
         {
             string email = Session["usuarioOperativo"].ToString();
+            Session["Usuario"] =  bodega.buscarUsuario(email);
 
-            return View(bodega.idBodegas(email));
+            return View(bodega.idBodegas(int.Parse(Session["Usuario"].ToString())));
         }
 
         public ActionResult registrarPasillo()
@@ -47,7 +52,7 @@ namespace Fase3.Controllers
 
         public ActionResult Estante()
         {
-            return View();
+            return View(pasillo.idPasillos(int.Parse(Session["Usuario"].ToString())));
         }
 
         public ActionResult registrarEstante()
@@ -57,7 +62,7 @@ namespace Fase3.Controllers
 
         public ActionResult Nivel()
         {
-            return View();
+            return View(estante.letrasEstantes(int.Parse(Session["Usuario"].ToString())));
         }
 
         public ActionResult Index()
