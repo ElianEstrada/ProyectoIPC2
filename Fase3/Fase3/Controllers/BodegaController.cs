@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,7 @@ namespace Fase3.Controllers
     public class BodegaController : Controller
     {
         static int codigo = 0;
-
+        BodegaLogic bodega = new BodegaLogic();
         public ActionResult Home()
         {
             return Content("<script> window.location.href='/UsuarioOperativo/Home' </script>");
@@ -32,13 +33,16 @@ namespace Fase3.Controllers
 
         public ActionResult Pasillo()
         {
-            return View();
+            string email = Session["usuarioOperativo"].ToString();
+
+            return View(bodega.idBodegas(email));
         }
 
         public ActionResult registrarPasillo()
         {
-            return Content("<script> alert('Pasillo Creado'); " +
-                "window.location.href= 'Pasillo' </script>");
+            return RedirectToAction("Pasillo", "Bodega");
+            //return Content("<script> alert('Pasillo Creado'); " +
+            //    "window.location.href= 'Pasillo' </script>");
         }
 
         public ActionResult Estante()

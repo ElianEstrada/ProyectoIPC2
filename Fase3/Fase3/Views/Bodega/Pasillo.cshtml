@@ -1,4 +1,5 @@
-﻿
+﻿@model LinkedList<Entidad.Bodega>
+
 @{
     ViewBag.Title = "Pasillo";
     Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
@@ -15,6 +16,16 @@
                 {
                     <form id="MyForm">
                         Código Bodega:
+                        <div class="input-field">
+                            <select name="codigoBodega">
+                                @foreach (var item in Model)
+                                {
+                                    <option>
+                                        @item.idBodega
+                                    </option>
+                                }
+                            </select>
+                        </div>
                         <input name="codigoBodega" placeholder="Código Bodega" type="text" required/>
                         Número de Pasillo:
                         <input name="numeroPasillo" placeholder="Número de Pasillo" type="text" required/>
@@ -34,4 +45,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+</script>
 

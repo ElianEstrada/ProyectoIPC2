@@ -185,7 +185,7 @@ create table Categoria (
 );
 
 create table Cliente (
-	nit int primary key not null,
+	nit bigint primary key not null,
 	nombre varchar(45) not null,
 	direccion text not null,
 	celular int not null,
@@ -204,7 +204,7 @@ create table Credito (
 	idCredito int identity(1,1) primary key not null,
 	limite decimal (5, 2) not null,
 	dias int not null,
-	fk_cliente int not null
+	fk_cliente bigint not null
 );
 
 
@@ -219,14 +219,6 @@ create table Usuario_Modulo (
 
 alter table Usuario_Modulo add constraint fk_UsuarioComprador foreign key (fk_usuario) references Usuario(idUsuario);
 alter table Usuario_Modulo add constraint fk_ModuloComprado foreign key (fk_modulo) references Modulo(codigoModulo);
-
-
-
-
-
-
-
-
 
 
 
@@ -249,6 +241,46 @@ create table Producto (
 	nombre varchar(45) not null,
 	descripcion text,
 	fk_presentacion int not null, 
-	fk_clasificacion int not null
+	fk_clasificacion int not null,
+	fk_usuarioOperativo int not null
 );
 
+alter table Producto add constraint fk_UsuarioOperativo2 foreign key (fk_usuarioOperativo) references UsuarioOperativo(cui);
+
+
+
+create table Bodega(
+	idBodega int primary key not null, 
+	nombreBodega varchar(45) not null, 
+	descripcion text,
+	direccionFisica text not null,
+	fk_usuarioOperativo int not null
+);
+
+alter table Bodega add constraint fk_UsuarioOperativo3 foreign key (fk_usuarioOperativo) references UsuarioOperativo(cui);
+
+create table Pasillo(
+	idPasillo int primary key not null,
+	largo decimal(5,2) not null,
+	ancho decimal(5,2) not null,
+	fk_bodega int not null
+);
+
+alter table Pasillo add constraint fk_Bodega foreign key (fk_bodega) references Bodega(idBodega);
+
+create table Estante(
+	letra varchar(10) primary key not null,
+	largo decimal(5,2) not null,
+	ancho decimal(5,2) not null,
+	alto decimal(5,2) not null,
+	fk_pasillo int not null
+);
+
+alter table Estante add constraint fk_Pasillo foreign key (fk_pasillo) references Pasillo(idPasillo);
+
+create table Nivel(
+	idNivel int primary key not null, 
+	fk_estante varchar(10) not null
+);
+
+alter table Nivel add constraint fk_Estante foreign key (fk_estante) references Estante(letra);
