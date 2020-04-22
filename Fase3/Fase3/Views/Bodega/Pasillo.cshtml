@@ -18,12 +18,13 @@
                         Código Bodega:
                         <div class="input-field">
                             <select name="codigoBodega" required>
+                                <option value="" disabled selected>Elije una Bodega</option>
                                 @foreach (var item in Model)
                                 {
-                                    <option value="@item.idBodega">
-                                        @item.idBodega
-                                    </option>
+                                    <option value="@item.idBodega"> @item.idBodega </option>
                                 }
+                                @*<option value="1">1</option>
+                                <option value="2">2</option>*@
                             </select>
                         </div>
                         Número de Pasillo:
