@@ -11,6 +11,11 @@ namespace Fase3.Controllers
     {
         static int codigo = 0;
 
+        public ActionResult Home()
+        {
+            return Content("<script> window.location.href='/UsuarioOperativo/Home' </script>");
+        }
+
         // GET: Bodega
         public ActionResult Bodega()
         {
@@ -22,7 +27,7 @@ namespace Fase3.Controllers
         {
             codigo = codigoBodega;
             return Content("<script> alert('Bodega Registrada'); " +
-                " window.location.href= 'Pasillo'</script>");
+                " window.location.href= 'Bodega'</script>");
         }
 
         public ActionResult Pasillo()
@@ -33,7 +38,7 @@ namespace Fase3.Controllers
         public ActionResult registrarPasillo()
         {
             return Content("<script> alert('Pasillo Creado'); " +
-                "window.location.href= 'Estante' </script>");
+                "window.location.href= 'Pasillo' </script>");
         }
 
         public ActionResult Estante()
@@ -44,6 +49,11 @@ namespace Fase3.Controllers
         public ActionResult registrarEstante()
         {
             return Content("<script> alert('Estante Registrado'); </script>");
+        }
+
+        public ActionResult Nivel()
+        {
+            return View();
         }
 
         public ActionResult Index()
