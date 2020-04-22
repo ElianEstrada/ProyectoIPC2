@@ -1,4 +1,4 @@
-﻿@model LinkedList<Entidad.Bodega>
+﻿@model  LinkedList<Entidad.Bodega>
 
 @{
     ViewBag.Title = "Pasillo";
@@ -17,16 +17,15 @@
                     <form id="MyForm">
                         Código Bodega:
                         <div class="input-field">
-                            <select name="codigoBodega">
+                            <select name="codigoBodega" required>
                                 @foreach (var item in Model)
                                 {
-                                    <option>
+                                    <option value="@item.idBodega">
                                         @item.idBodega
                                     </option>
                                 }
                             </select>
                         </div>
-                        <input name="codigoBodega" placeholder="Código Bodega" type="text" required/>
                         Número de Pasillo:
                         <input name="numeroPasillo" placeholder="Número de Pasillo" type="text" required/>
                         Largo:

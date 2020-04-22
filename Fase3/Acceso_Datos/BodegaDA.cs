@@ -22,12 +22,14 @@ namespace Acceso_Datos
 
             try
             {
+                int idUsuario = usuarioOperativo(emailUsuarioOperativo);
+
                 cmd = new SqlCommand("show_Bodegas", conexion.abrirConexion());
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idUsuario", usuarioOperativo(emailUsuarioOperativo));
+                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-
+                
                 while (reader.Read())
                 {
                     Bodega bodega = new Bodega();
@@ -36,10 +38,12 @@ namespace Acceso_Datos
                     bodega.nombreBodega = reader["nombreBodega"].ToString();
                     bodega.descripcion = reader["descripcion"].ToString();
                     bodega.direccionFisica = reader["direccionFisica"].ToString();
-                    bodega.usuarioOperativo = int.Parse(reader["usuarioOperativo"].ToString());
+                    bodega.usuarioOperativo = int.Parse(reader["fk_usuarioOperativo"].ToString());
+
+                    bodegas.AddLast(bodega);
                 }
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
                 return null;
             }
@@ -53,13 +57,16 @@ namespace Acceso_Datos
             {
                 cmd = new SqlCommand("search_UsuarioOperativo_email", conexion.abrirConexion());
                 cmd.CommandType = CommandType.StoredProcedure;
+
                 cmd.Parameters.AddWithValue("@email", email);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    return int.Parse(reader["fk_usuario"].ToString());
+                    int idUsuario = int.Parse(reader["fk_usuario"].ToString());
+                    reader.Close();
+                    return idUsuario;
                 }
                 else
                 {
