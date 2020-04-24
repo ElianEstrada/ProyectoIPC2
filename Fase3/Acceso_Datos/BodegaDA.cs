@@ -49,30 +49,43 @@ namespace Acceso_Datos
             return bodegas;
         }
 
-        public int usuarioOperativo(string email)
+        
+        public bool addBodega(int idBodega, string nombre, string descripcion, string direccion, int usuarioOperativo)
         {
+
             try
             {
-                cmd = new SqlCommand("search_UsuarioOperativo_email", conexion.abrirConexion());
+                cmd = new SqlCommand("add_Bodega", conexion.abrirConexion());
                 cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@email", email);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                cmd.Parameters.AddWithValue("@idBodega", idBodega);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                if(descripcion != null || descripcion != "")
                 {
-                    return int.Parse(reader["fk_usuario"].ToString());
+                    cmd.Parameters.AddWithValue("@descripcion", descripcion);
                 }
                 else
                 {
-                    return 0;
+                    cmd.Parameters.Add("@descripcion", SqlDbType.Text).Value = System.Data.SqlTypes.SqlString.Null;
                 }
-                
+                cmd.Parameters.AddWithValue("@direccion", direccion);
+                cmd.Parameters.AddWithValue("@usuarioOperativo", usuarioOperativo);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int filas = reader.RecordsAffected;
+
+                if(filas != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception e)
             {
-                return 0;
+                return false;
             }
         }
 

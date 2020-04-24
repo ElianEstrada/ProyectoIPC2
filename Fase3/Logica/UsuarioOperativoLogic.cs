@@ -1,4 +1,5 @@
 ﻿using Acceso_Datos;
+using Entidad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,11 @@ namespace Logica
             }
 
             return false;
+        }
+
+        public UsuarioOperativo buscarUsuario(string email)
+        {
+            return usuarioOperativoDA.usuarioOperativo(email);
         }
 
     }

@@ -18,10 +18,9 @@ namespace Logica
             return bodegaDA.listaBodegas(idUsuario);
         }
 
-        public int buscarUsuario (string email)
+        public bool addBodega(int idBodega, string nombre, string descripcion, string direccion, int usuarioOperativo)
         {
-            return bodegaDA.usuarioOperativo(email);
+            return bodegaDA.addBodega(idBodega, nombre, descripcion, direccion, usuarioOperativo);
         }
-
     }
 }

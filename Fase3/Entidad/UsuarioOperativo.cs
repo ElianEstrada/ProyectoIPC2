@@ -9,7 +9,7 @@ namespace Entidad
     public class UsuarioOperativo
     {
 
-        public long cui { get; set; }
+        public int cui { get; set; }
         public string nombreUsuarioOperativo { get; set; }
         public string correoElectronico { get; set; }
         public int celular { get; set; }

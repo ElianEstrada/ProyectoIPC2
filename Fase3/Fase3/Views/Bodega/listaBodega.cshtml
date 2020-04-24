@@ -1,0 +1,99 @@
+﻿@model LinkedList<Entidad.Bodega>
+
+@{
+    ViewBag.Title = "listaBodega";
+    Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
+}
+
+<h2>listaBodega</h2>
+
+<div class="card">
+    <table class="striped">
+        <tr>
+            <th>idBodega</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Direccion</th>
+            <th>Acciones</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.idBodega</td>
+                <td>@item.nombreBodega</td>
+                <td>@item.descripcion</td>
+                <td>@item.direccionFisica</td>
+                <td>
+                    <a href="#"> <i class="material-icons red-text"> delete </i></a>
+                    <a id="btnModificar" class="modal-trigger"
+                       href="#modal1"
+                       data-id="1"
+                       data-nombre="@item.nombreBodega">
+                        <i class="material-icons"> edite </i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class="container center">
+            <h3>Modificar Bodega</h3>
+        </div>
+        <div>
+            <div class="row">
+                <div>
+                    <form id="modificar">
+                        <div class="col s6">
+                            Nombre:
+                            <input id="nombre" type="text" placeholder="Nombre" />
+                            Apellido:
+                            <input type="text" placeholder="Apellido" />
+                        </div>
+                        <div class="col s6">
+                            Nombre:
+                            <input type="text" placeholder="Nombre" />
+                            Apellido:
+                            <input type="text" placeholder="Apellido" />
+                        </div>
+                        <div class="center">
+                            <button class="btn"> Modificar </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>*@
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+
+    //$("#btnModificar").click(() => {
+    //    let { idBodega, nombreBodega, descripcion, direccion } = $(this).data();
+    //    let data = $(this).data();
+    //    console.log(data)
+    //})
+
+    $(document).on('click', "#btnModificar", function () {
+        let { id, nombre } = $(this).data();
+
+        $(".modal-content #nombre").val(nombre);
+    });
+
+</script>
+

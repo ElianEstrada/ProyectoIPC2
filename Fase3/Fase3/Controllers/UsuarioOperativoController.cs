@@ -24,5 +24,10 @@ namespace Fase3.Controllers
         {
             return Content("<script> window.location.href = '/Bodega/Bodega' </script>");
         }
+
+        public ActionResult listaBodega()
+        {
+            return RedirectToAction("listaBodega", "Bodega");
+        }
     }
 }

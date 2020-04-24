@@ -9,6 +9,8 @@ namespace Fase3.Controllers
 {
     public class IndexController : Controller
     {
+
+        UsuarioOperativoLogic usuarioOperativo = new UsuarioOperativoLogic();
         // GET: Index
         public ActionResult Index()
         {
@@ -17,14 +19,16 @@ namespace Fase3.Controllers
 
         public ActionResult Login(string email, string password)
         {
-          UsuarioOperativoLogic usuarioOperativoLogic = new UsuarioOperativoLogic();
+            UsuarioOperativoLogic usuarioOperativoLogic = new UsuarioOperativoLogic();
 
-            if(usuarioOperativoLogic.verificarUsuarioOperativo(email, password))
+            if (usuarioOperativoLogic.verificarUsuarioOperativo(email, password))
             {
                 Session["usuarioOperativo"] = email;
-                return Content("<script> window.location.href = '/UsuarioOperativo/Home'; </script>");
+                Session["Usuario"] = usuarioOperativo.buscarUsuario(email).usuario;
+                return RedirectToAction("Home", "UsuarioOperativo");
+                //return Content("<script> window.location.href = '/UsuarioOperativo/Home'; </script>");
             }
-            
+
 
             return Content("");
         }

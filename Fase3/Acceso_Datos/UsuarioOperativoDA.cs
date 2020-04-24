@@ -31,7 +31,7 @@ namespace Acceso_Datos
                 {
                     UsuarioOperativo usuarioOperativo = new UsuarioOperativo();
 
-                    usuarioOperativo.cui = long.Parse(reader["cui"].ToString());
+                    usuarioOperativo.cui = int.Parse(reader["cui"].ToString());
                     usuarioOperativo.nombreUsuarioOperativo = reader["nombre"].ToString();
                     usuarioOperativo.correoElectronico = reader["correoElectronico"].ToString();
                     usuarioOperativo.contraseña = reader["contraseña"].ToString();
@@ -50,6 +50,42 @@ namespace Acceso_Datos
 
             return usuariosOperativos;
         }
+
+        public UsuarioOperativo usuarioOperativo(string email)
+        {
+            UsuarioOperativo usuario = new UsuarioOperativo();
+            try
+            {
+                cmd = new SqlCommand("search_UsuarioOperativo_email", conexion.abrirConexion());
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@email", email);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    usuario.cui = int.Parse(reader["cui"].ToString());
+                    usuario.nombreUsuarioOperativo = reader["nombre"].ToString();
+                    usuario.correoElectronico = reader["correoElectronico"].ToString();
+                    usuario.celular = int.Parse(reader["celular"].ToString());
+                    usuario.contraseña = reader["contraseña"].ToString();
+                    usuario.usuario =  int.Parse(reader["fk_usuario"].ToString());
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+            return usuario;
+        }
+
 
     }
 }
