@@ -25,9 +25,10 @@
                 <td>@item.direccionFisica</td>
                 <td>
                     <a href="#"> <i class="material-icons red-text"> delete </i></a>
+                    <a href="#" title="Mostrar Pasillos"><i class="material-icons green-text"> remove_red_eye</i></a>
                     <a id="btnModificar" class="modal-trigger"
                        href="#modal1"
-                       data-id="1"
+                       data-id="@item.idBodega"
                        data-nombre="@item.nombreBodega">
                         <i class="material-icons"> edite </i>
                     </a>
@@ -46,23 +47,26 @@
         <div>
             <div class="row">
                 <div>
-                    <form id="modificar">
-                        <div class="col s6">
-                            Nombre:
-                            <input id="nombre" type="text" placeholder="Nombre" />
-                            Apellido:
-                            <input type="text" placeholder="Apellido" />
-                        </div>
-                        <div class="col s6">
-                            Nombre:
-                            <input type="text" placeholder="Nombre" />
-                            Apellido:
-                            <input type="text" placeholder="Apellido" />
-                        </div>
-                        <div class="center">
-                            <button class="btn"> Modificar </button>
-                        </div>
-                    </form>
+                    @using (Html.BeginForm("modificarBodega", "Bodega", FormMethod.Post))
+                    {
+                        <form id="modificar">
+                            <div class="col s6">
+                                Id Bodega:
+                                <input type="text" name="idBodega" placeholder="IdBodega" id="idBodega" disabled/>
+                                Nombre:
+                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" />
+                            </div>
+                            <div class="col s6">
+                                Nombre:
+                                <input type="text" placeholder="Nombre" />
+                                Apellido:
+                                <input type="text" placeholder="Apellido" />
+                            </div>
+                            <div class="center">
+                                <button class="btn"> Modificar </button>
+                            </div>
+                        </form>
+                    }
                 </div>
             </div>
         </div>
@@ -93,6 +97,7 @@
         let { id, nombre } = $(this).data();
 
         $(".modal-content #nombre").val(nombre);
+        $(".modal-content #idBodega").val(id);
     });
 
 </script>

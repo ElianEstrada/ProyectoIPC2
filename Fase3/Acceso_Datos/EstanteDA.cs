@@ -50,5 +50,35 @@ namespace Acceso_Datos
             return estantes;
         }
 
+        public bool addEstante(string letra, double largo, double ancho, double alto, int idPasillo)
+        {
+
+            try
+            {
+                cmd = new SqlCommand("add_Estante", conexion.abrirConexion());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@letra", letra);
+                cmd.Parameters.AddWithValue("@largo", largo);
+                cmd.Parameters.AddWithValue("@ancho", ancho);
+                cmd.Parameters.AddWithValue("@alto", alto);
+                cmd.Parameters.AddWithValue("@idPasillo", idPasillo);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int fila = reader.RecordsAffected;
+
+                if(fila != 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return false;
+        }
+
     }
 }

@@ -51,6 +51,11 @@ namespace Fase3.Controllers
             return View(bodega.idBodegas(int.Parse(Session["Usuario"].ToString())));
         }
 
+        public ActionResult modificarBodega()
+        {
+            return RedirectToAction("listaBodega", "Bodega");
+        }
+
         public ActionResult Pasillo()
         {
             //email = Session["usuarioOperativo"].ToString();
@@ -61,9 +66,17 @@ namespace Fase3.Controllers
 
         public ActionResult registrarPasillo(int numeroPasillo, double largo, double ancho, int codigoBodega)
         {
-            //return RedirectToAction("Pasillo", "Bodega");
-            return Content("<script> alert('Pasillo Creado'); " +
+            if(pasillo.addPasillo(numeroPasillo, largo, ancho, codigoBodega))
+            {
+                return Content("<script> alert('Pasillo Creado'); " +
                 "window.location.href= 'Pasillo' </script>");
+            }
+            else
+            {
+                return Content("<script> alert('No se pudo agregar el Pasillo'); " +
+                "window.location.href= 'Pasillo' </script>");
+            }
+            
         }
 
         public ActionResult Estante()
@@ -71,14 +84,29 @@ namespace Fase3.Controllers
             return View(pasillo.idPasillos(int.Parse(Session["Usuario"].ToString())));
         }
 
-        public ActionResult registrarEstante()
+        public ActionResult registrarEstante(int numeroPasillo, string letra, double alto, double largo, double ancho)
         {
-            return Content("<script> alert('Estante Registrado'); </script>");
+            if(estante.addEstante(letra, largo, ancho, alto, numeroPasillo))
+            {
+                return Content("<script> alert('Estante Registrado'); " +
+                    "window.location.href='Estante' </script>");
+            }
+            else
+            {
+                return Content("<script> alert('No se pudo registrar el Estante'); " +
+                    "window.location.href='Estante' </script>");
+            }
         }
 
         public ActionResult Nivel()
         {
             return View(estante.letrasEstantes(int.Parse(Session["Usuario"].ToString())));
+        }
+
+        public ActionResult registrarNivel()
+        {
+            return Content("<script> alert('Nivel Registrado'); " +
+                    "window.location.href='Estante' </script>");
         }
 
         public ActionResult Index()

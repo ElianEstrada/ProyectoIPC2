@@ -18,5 +18,9 @@ namespace Logica
             return pasilloDA.listaPasillos(idUsuario);
         }
 
+        public bool addPasillo(int idPasillo, double largo, double ancho, int idBodega)
+        {
+            return pasilloDA.addPasillo(idPasillo, largo, ancho, idBodega);
+        }
     }
 }

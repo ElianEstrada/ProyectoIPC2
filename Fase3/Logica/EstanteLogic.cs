@@ -18,5 +18,10 @@ namespace Logica
             return estanteDA.listaEstantes(idUsuario);
         }
 
+        public bool addEstante(string letra, double largo, double ancho, double alto, int idPasillo)
+        {
+            return estanteDA.addEstante(letra, largo, ancho, alto, idPasillo);
+        }
+
     }
 }

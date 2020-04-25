@@ -49,5 +49,34 @@ namespace Acceso_Datos
             return pasillos;
         }
 
+        public bool addPasillo(int idPasillo, double largo, double ancho, int idBodega)
+        {
+
+            try
+            {
+                cmd = new SqlCommand("add_Pasillo", conexion.abrirConexion());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idPasillo", idPasillo);
+                cmd.Parameters.AddWithValue("@largo", largo);
+                cmd.Parameters.AddWithValue("@ancho", ancho);
+                cmd.Parameters.AddWithValue("@idBodega", idBodega);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int fila = reader.RecordsAffected;
+
+                if(fila != 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return false;
+        }
+
     }
 }
