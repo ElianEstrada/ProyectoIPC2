@@ -75,8 +75,12 @@ namespace Fase3.Controllers
             {
                 return Content("<script> alert('No se pudo agregar el Pasillo'); " +
                 "window.location.href= 'Pasillo' </script>");
-            }
-            
+            }   
+        }
+
+        public ActionResult listaPasillos(int idBodega)
+        {
+            return View(pasillo.pasillosBodega(int.Parse(Session["Usuario"].ToString()), idBodega));
         }
 
         public ActionResult Estante()
@@ -98,22 +102,35 @@ namespace Fase3.Controllers
             }
         }
 
+        public ActionResult listaEstantes(int idPasillo)
+        {
+            return View(estante.estantePasillo(int.Parse(Session["Usuario"].ToString()), idPasillo));
+        }
+
         public ActionResult Nivel()
         {
             return View(estante.letrasEstantes(int.Parse(Session["Usuario"].ToString())));
         }
 
-        public ActionResult registrarNivel()
+        public ActionResult registrarNivel(int idNivel, double alto, string letra)
         {
-            return Content("<script> alert('Nivel Registrado'); " +
-                    "window.location.href='Estante' </script>");
+            if (nivel.addNivel(idNivel, alto, letra))
+            {
+                return Content("<script> alert('Nivel Registrado'); " +
+                    "window.location.href='Nivel' </script>");
+            }
+            else
+            {
+                return Content("<script> alert('No se pudo registrar el Nivel'); " +
+                    "window.location.href='Nivel' </script>");
+            }
+            
         }
 
         public ActionResult Index()
         {
             Session["usuarioOperativo"] = null;
             return RedirectToAction("Index", "Index");
-            //return Content("<script> window.location.href = '/Index/Index' </script>");
         }
     }
 }

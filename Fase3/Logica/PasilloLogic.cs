@@ -22,5 +22,20 @@ namespace Logica
         {
             return pasilloDA.addPasillo(idPasillo, largo, ancho, idBodega);
         }
+
+        public LinkedList<Pasillo> pasillosBodega(int idUsuario, int idBodega)
+        {
+            LinkedList<Pasillo> pasillos = new LinkedList<Pasillo>();
+
+            foreach(var item in pasilloDA.listaPasillos(idUsuario))
+            {
+                if(item.idBodega == idBodega)
+                {
+                    pasillos.AddLast(item);
+                }
+            }
+
+            return pasillos;
+        }
     }
 }

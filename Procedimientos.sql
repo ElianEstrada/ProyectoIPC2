@@ -80,6 +80,7 @@ end;
 
 exec add_Estante 'A', 3.25, 3, 2, 1;
 
+
 select * from Estante;
 
 create procedure add_Nivel

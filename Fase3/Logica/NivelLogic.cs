@@ -18,5 +18,10 @@ namespace Logica
             return nivelDA.listaNiveles(idUsuario);
         }
 
+        public bool addNivel(int idNivel, double alto, string letra)
+        {
+            return nivelDA.addNivel(idNivel, alto, letra);
+        }
+
     }
 }

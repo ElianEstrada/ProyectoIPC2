@@ -47,5 +47,33 @@ namespace Acceso_Datos
             return niveles;
         }
 
+        public bool addNivel(int idNivel, double alto, string letra)
+        {
+
+            try
+            {
+                cmd = new SqlCommand("add_Nivel", conexion.abrirConexion());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idNivel", idNivel);
+                cmd.Parameters.AddWithValue("@alto", alto);
+                cmd.Parameters.AddWithValue("@letraEstante", letra);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int filas = reader.RecordsAffected;
+
+                if(filas != 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return false;
+        }
+
     }
 }

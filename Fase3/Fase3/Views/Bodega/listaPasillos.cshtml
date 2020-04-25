@@ -1,0 +1,35 @@
+﻿@model LinkedList<Entidad.Pasillo>
+
+@{
+    ViewBag.Title = "listaPasillos";
+    Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
+}
+
+<h2>listaPasillos</h2>
+
+<div class="card m6">
+    <table class="striped">
+        <tr>
+            <th>idPasillo</th>
+            <th>Largo</th>
+            <th>Ancho</th>
+            <th>Acciones</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.idPasillo</td>
+                <td>@item.largo</td>
+                <td>@item.ancho</td>
+                <td>
+                    <a href="#" title="Mostrar Estantes">
+                        <i class="material-icons">
+                            @Html.ActionLink("remove_red_eye", "listaEstantes", new { idPasillo = item.idPasillo }, new { @class = "green-text", @title = "Mostrar Estante" })
+                        </i>
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>

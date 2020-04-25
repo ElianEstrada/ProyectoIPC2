@@ -23,5 +23,20 @@ namespace Logica
             return estanteDA.addEstante(letra, largo, ancho, alto, idPasillo);
         }
 
+        public LinkedList<Estante> estantePasillo (int idUsuario, int idPasillo)
+        {
+            LinkedList<Estante> estantes = new LinkedList<Estante>();
+
+            foreach(var item in estanteDA.listaEstantes(idUsuario))
+            {
+                if(item.idPasillo == idPasillo)
+                {
+                    estantes.AddLast(item);
+                }
+            }
+
+            return estantes;
+        }
+
     }
 }

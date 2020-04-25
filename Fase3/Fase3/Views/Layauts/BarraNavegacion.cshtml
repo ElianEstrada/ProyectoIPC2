@@ -25,27 +25,56 @@
                 <li class="divider"></li>
                 <li> <a href="Index"> Transacciones </a></li>
             </ul>
-            <nav>
-                <div class="nav-wrapper blue">
-                    <a href="Home" class="brand-logo"> ERP SaaS </a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a class="dropdown-trigger" href="#" data-target="dp2"> Inventario <i class="material-icons right"> arrow_drop_down</i> </a></li>
-                        <li><a href="#"> Components </a></li>
-                        <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"> Sesión <i class="material-icons right">arrow_drop_down</i></a></li>
-                    </ul>
-                </div>
-            </nav>
+            <ul id="dropdown2" class="dropdown-content">
+                <li><a href="#!"> Perfil </a></li>
+                <li><a href="#!">two</a></li>
+                <li class="divider"></li>
+                <li> <a href="Index"> Cerrar Sesión </a></li>
+            </ul>
+            <ul id="dp3" class="dropdown-content">
+                <li><a href="Bodega"> Crear Bodega </a></li>
+                <li><a href="listaBodega"> Ver Bodegas</a></li>
+                <li><a href="#!"> Informes </a></li>
+                <li class="divider"></li>
+                <li> <a href="Index"> Transacciones </a></li>
+            </ul>
+            <div class="navbar-fixed">
+                <nav>
+                    <div class="nav-wrapper blue">
+                        <a href="Home" class="brand-logo"> ERP SaaS </a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a class="dropdown-trigger" href="#" data-target="dp2"> Inventario <i class="material-icons right"> arrow_drop_down</i> </a></li>
+                            <li><a href="#"> Components </a></li>
+                            <!-- Dropdown Trigger -->
+                            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"> Sesión <i class="material-icons right">arrow_drop_down</i></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <ul class="sidenav" id="mobile-demo">
+                <li><a class="dropdown-trigger" href="#" data-target="dp3"> Inventario <i class="material-icons right"> arrow_drop_down</i> </a></li>
+                <li><a href="#"> Components </a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"> Sesión <i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
         </div>
         <div class="container">
             @RenderBody()
         </div>
     </div>
     <script>
+        
         document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.dropdown-trigger');
-            var instances = M.Dropdown.init(elems);
+            //var elems = document.querySelectorAll('.sidenav');
+            //var instances = M.Sidenav.init(elems);
+            M.AutoInit();
         });
+
+        //document.addEventListener('DOMContentLoaded', function () {
+        //    var elems = document.querySelectorAll('.dropdown-trigger');
+        //    var instances = M.Dropdown.init(elems);
+        //});
     </script>
 </body>
 </html>
