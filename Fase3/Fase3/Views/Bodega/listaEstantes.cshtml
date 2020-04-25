@@ -5,5 +5,34 @@
     Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
 }
 
-<h2>listaEstantes</h2>
+<h2>Estantes</h2>
+
+<div class="card m6">
+    <table class="striped">
+        <tr>
+            <th>Letra</th>
+            <th>Largo</th>
+            <th>Ancho</th>
+            <th>Alto</th>
+            <th>Acciones</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.letra</td>
+                <td>@item.largo m</td>
+                <td>@item.ancho m</td>
+                <td>@item.alto  m</td>
+                <td>
+                    <a href="#" title="Mostrar Estantes">
+                        <i class="material-icons">
+                            @Html.ActionLink("remove_red_eye", "listaNiveles", new { letra = item.letra }, new { @class = "green-text", @title = "Mostrar Niveles" })
+                        </i>
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
 

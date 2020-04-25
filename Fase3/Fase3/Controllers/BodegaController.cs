@@ -127,6 +127,11 @@ namespace Fase3.Controllers
             
         }
 
+        public ActionResult listaNiveles(string letra)
+        {
+            return View(nivel.nivelesEstante(int.Parse(Session["Usuario"].ToString()), letra));
+        }
+
         public ActionResult Index()
         {
             Session["usuarioOperativo"] = null;

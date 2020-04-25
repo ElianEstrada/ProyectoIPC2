@@ -117,6 +117,7 @@
     <Content Include="Views\Bodega\listaBodega.cshtml" />
     <Content Include="Views\Bodega\listaPasillos.cshtml" />
     <Content Include="Views\Bodega\listaEstantes.cshtml" />
+    <Content Include="Views\Bodega\listaNiveles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

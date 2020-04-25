@@ -1,0 +1,29 @@
+﻿@model LinkedList<Entidad.Nivel>
+
+@{
+    ViewBag.Title = "listaNiveles";
+    Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
+}
+
+<h2>Niveles</h2>
+
+<div class="card m6">
+    <table class="striped">
+        <tr>
+            <th>idNivel</th>
+            <th>Largo</th>
+            <th>Ancho</th>
+            <th>Alto</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.idNivel</td>
+                <td>@item.largo m</td>
+                <td>@item.ancho m</td>
+                <td>@item.alto  m</td>
+            </tr>
+        }
+    </table>
+</div>
+

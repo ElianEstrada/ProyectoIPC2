@@ -23,5 +23,20 @@ namespace Logica
             return nivelDA.addNivel(idNivel, alto, letra);
         }
 
+        public LinkedList<Nivel> nivelesEstante(int idUsuario, string letra)
+        {
+            LinkedList<Nivel> niveles = new LinkedList<Nivel>();
+
+            foreach (var item in nivelDA.listaNiveles(idUsuario))
+            {
+                if (item.letraEstante.Equals(letra))
+                {
+                    niveles.AddLast(item);
+                }
+            }
+
+            return niveles;
+        }
+
     }
 }
