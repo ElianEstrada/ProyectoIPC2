@@ -1,0 +1,89 @@
+﻿@model Entidad.UsuarioOperativo
+
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
+}
+
+<h2> Perfil de @Model.nombreUsuarioOperativo</h2>
+
+<div class="card">
+
+    <div class="row">
+
+        <div class="col m3">
+            <div class="card">
+                <div class="card-image">
+                    <img src="~/Imagenes/icono-usuario-png-8.png" class="blue" />
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span> <b>Puesto:</b> @Model.puesto</span>
+                    <span> <b>Descripción: </b> @Model.descripcion</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col m9">
+            <div class="card">
+                <div class="card-content">
+                    <form>
+                        Nombre:
+                        <input type="text" placeholder="Nombre" disabled value="@Model.nombreUsuarioOperativo" />
+                        Número de CUI:
+                        <input type="text" placeholder="CUI" disabled value="@Model.cui" />
+                        Celular:
+                        <input type="text" placeholder="Celular" disabled value="@Model.celular" />
+                        Contraseña: <a href="#modal1" class="modal-trigger"> <i class="material-icons right">edite</i></a>
+                        <input type="password" placeholder="Contraseña" disabled value="@Model.contraseña" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class="container center">
+            <h3>Cambiar Contraseña</h3>
+        </div>
+        <div>
+            <div class="row">
+                <div>
+                    @using (Html.BeginForm("updatePassword", "UsuarioOperativo", FormMethod.Post))
+                    {
+                        <form id="modificar" class="container">
+                            <div class="col s6">
+                                Correo Electrónico:
+                                <input type="text" name="email" value="@Model.correoElectronico" readonly="readonly"/>
+                                Contraseña Nueva:
+                                <input type="password" name="nuevaPass" placeholder="Contraseña Nueva" />
+                            </div>
+                            <div class="col s6">
+                                Contraseña Actual:
+                                <input type="password" placeholder="Contraseña Actual" name="passActual" />
+                                Verificar Contraseña:
+                                <input type="password" placeholder="Contraseña Nueva" name="verificarPass" />
+                            </div>
+                            <div class="center">
+                                <button class="btn"> Actualizar Contraseña </button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+
+
+</script>

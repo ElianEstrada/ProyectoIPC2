@@ -15,6 +15,7 @@ namespace Entidad
         public int celular { get; set; }
         public string  contraseña { get; set; }
         public string puesto { get; set; }
+        public string descripcion { get; set; }
         public int usuario { get; set; }
 
     }

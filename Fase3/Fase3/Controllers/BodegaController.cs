@@ -137,5 +137,10 @@ namespace Fase3.Controllers
             Session["usuarioOperativo"] = null;
             return RedirectToAction("Index", "Index");
         }
+
+        public ActionResult Perfil()
+        {
+            return RedirectToAction("Perfil", "UsuarioOperativo");
+        }
     }
 }

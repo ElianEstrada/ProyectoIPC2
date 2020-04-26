@@ -32,5 +32,9 @@ namespace Logica
             return usuarioOperativoDA.usuarioOperativo(email);
         }
 
+        public bool updatePassword(string email, string password)
+        {
+            return usuarioOperativoDA.updatePassword(password, email);
+        }
     }
 }

@@ -70,6 +70,8 @@ namespace Acceso_Datos
                     usuario.correoElectronico = reader["correoElectronico"].ToString();
                     usuario.celular = int.Parse(reader["celular"].ToString());
                     usuario.contraseña = reader["contraseña"].ToString();
+                    usuario.puesto = reader["puesto"].ToString();
+                    usuario.descripcion = reader["descripcin"].ToString();
                     usuario.usuario =  int.Parse(reader["fk_usuario"].ToString());
                 }
                 else
@@ -84,6 +86,33 @@ namespace Acceso_Datos
             }
 
             return usuario;
+        }
+
+        public bool updatePassword(string password, string email)
+        {
+
+            try
+            {
+                cmd = new SqlCommand("updatePassword", conexion.abrirConexion());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@email", email);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int filas = reader.RecordsAffected;
+
+                if(filas != 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return false;
         }
 
 

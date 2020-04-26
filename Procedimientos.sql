@@ -33,9 +33,17 @@ create procedure search_UsuarioOperativo_email
 @email varchar(45)
 as
 begin
-select * from UsuarioOperativo as UO
+select UO.cui, UO.nombre, UO.correoElectronico, UO.celular, UO.contraseña, UO.fk_usuario, P.nombre as puesto, P.descripcin from UsuarioOperativo as UO
+join Puesto as P
+on UO.fk_puesto = P.idPuesto
 where UO.correoElectronico = @email;
 end;
+
+select UO.cui, UO.nombre, UO.correoElectronico, UO.celular, UO.contraseña, UO.fk_usuario, P.nombre as puesto from UsuarioOperativo as UO
+join Puesto as P
+on UO.fk_puesto = P.idPuesto
+where UO.correoElectronico = 'raul12@gmail.com';
+
 
 exec search_UsuarioOperativo_email 'raul12@gmail.com';
 
@@ -43,6 +51,10 @@ select * from Bodega;
 
 
 select * from Usuario_Modulo;
+
+select * from UsuarioOperativo;
+
+select * from Puesto;
 
 create procedure show_Bodegas 
 @idUsuario int
@@ -94,6 +106,7 @@ exec add_Nivel 1, 1, 'A';
 
 select * from Nivel;
 
+select * from UsuarioOperativo;
 
 
 create procedure show_Pasillo
@@ -165,3 +178,15 @@ where U.idUsuario = @idUsuario;
 end;
 
 exec show_Nivel 2;
+
+
+create procedure updatePassword
+@password varchar(45), @email varchar(45)
+as
+begin
+update UsuarioOperativo set contraseña = @password where correoElectronico = @email;
+end;
+
+
+
+select * from UsuarioOperativo;
