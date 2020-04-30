@@ -163,7 +163,7 @@ alter table AsignacionModulo add constraint fk_Modulo foreign key (fk_codigoModu
 
 
 create table Proveedor(
-	nit int primary key not null,
+	nit int not null,
 	nombre varchar(45) not null,
 	direccion text not null,
 	celular int not null,
@@ -174,9 +174,15 @@ create table Proveedor(
 
 
 alter table Proveedor add fk_UsuarioOperativo int not null;
+alter table Proveedor add pk_usuario int not null;
+alter table Proveedor add constraint PK_Proveedor primary key (nit, pk_usuario);
 
 alter table Proveedor add constraint fk_UserOperativo2 foreign key (fk_UsuarioOperativo) references UsuarioOperativo(cui);
 
+
+select * from Proveedor as P
+join Usuario as U
+on U.idUsuario = P.pk_usuario;
 
 create table Categoria (
 	codigoCategoria int identity(1,1) primary key not null,
@@ -185,7 +191,7 @@ create table Categoria (
 );
 
 create table Cliente (
-	nit bigint primary key not null,
+	nit bigint not null,
 	nombre varchar(45) not null,
 	direccion text not null,
 	celular int not null,
@@ -196,9 +202,13 @@ create table Cliente (
 
 alter table Cliente add constraint fk_categoriaCliente foreign key (fk_categoria) references Categoria(codigoCategoria);
 
+alter table Cliente add pk_usuario int not null;
+
 alter table Cliente add fk_UsuarioOperativo int not null;
 
 alter table Cliente add constraint fk_UserOperativo foreign key (fk_UsuarioOperativo) references UsuarioOperativo(cui);
+
+alter table Cliente add constraint Pk_cliente primary key (nit, pk_usuario);
 
 create table Credito (
 	idCredito int identity(1,1) primary key not null,
@@ -207,8 +217,8 @@ create table Credito (
 	fk_cliente bigint not null
 );
 
-
-alter table Credito add constraint fk_cliente2 foreign key (fk_cliente) references Cliente(nit);
+alter table Credito add pk_usuario int not null;
+alter table Credito add constraint fk_cliente2 foreign key (fk_cliente, pk_usuario) references Cliente(nit, pk_usuario);
 
 
 create table Usuario_Modulo (
@@ -247,6 +257,9 @@ create table Producto (
 
 alter table Producto add constraint fk_UsuarioOperativo2 foreign key (fk_usuarioOperativo) references UsuarioOperativo(cui);
 
+alter table Producto add constraint fk_presentacion foreign key (fk_presentacion) references Presentacion(idPresentacion);
+alter table Producto add constraint fk_clasificacion foreign key (fk_clasificacion) references Clasificacion(idClasificacion);
+
 
 
 create table Bodega(
@@ -284,3 +297,61 @@ create table Nivel(
 );
 
 alter table Nivel add constraint fk_Estante foreign key (fk_estante) references Estante(letra);
+
+select * from UsuarioOperativo;
+
+insert into Proveedor (nit, nombre, correoElectronico, celular, contacto, direccion, limiteCredito, fk_UsuarioOperativo, pk_usuario)
+values (1234321, 'Gala', 'gala12@gmail.com', 23564512, 'Jenny', 'Zona 1, calle 18', 250.5, 1, 2);
+
+select * from Proveedor as P
+join Usuario as U
+on U.idUsuario = P.pk_usuario;
+
+
+create table TipoCosteo(
+	idTipoCosteo int primary key not null,
+	nombreCosteo varchar(45) not null
+);
+
+create table LogicaLote(
+	idLogica int primary key not null,
+	nombreLogica varchar(45) not null
+);
+
+
+create table EntradaBodega(
+	idEntrada int primary key not null,
+	fechaEntrada date not null,
+	fk_proveedor int not null,
+	fk_usuario int not null,
+	fk_usuarioOperativo int not null
+);
+
+alter table EntradaBodega add constraint fk_ProveedorEntrada foreign key (fk_proveedor, fk_usuario) references Proveedor(nit, pk_usuario);
+alter table EntradaBodega add constraint fk_UsuarioOperativoEntrada foreign key (fk_usuarioOperativo) references UsuarioOperativo (cui);
+
+
+create table Detalle_Entrada(
+	idDetalleEntrada int identity(1,1) primary key not null,
+	precio decimal(5,2) not null,
+	cantidad int not null,
+	fk_producto int not null,
+	fk_entrada int not null,
+	fk_tipoCosteo int not null,
+	fk_logica int
+);
+
+alter table Detalle_Entrada add constraint FK_ProductoEntrada foreign key (fk_producto) references Producto(codigoProducto);
+alter table Detalle_Entrada add constraint FK_Entrada foreign key (fk_entrada) references EntradaBodega(idEntrada);
+alter table Detalle_Entrada add constraint FK_Costeo foreign key (fk_tipoCosteo) references TipoCosteo(idTipoCosteo);
+alter table Detalle_Entrada add constraint FK_LogicaCosteo foreign key (fk_logica) references LogicaLote(idLogica);
+
+create table AsignacionNivel(
+	idAsignacionNivel int identity(1,1) primary key not null,
+	cantidad int not null,
+	fk_nivel int not null,
+	fk_detalleEntrada int not null
+);
+
+alter table AsignacionNivel add constraint FK_NivelEntrada foreign key (fk_nivel) references Nivel(idNivel);
+alter table AsignacionNivel add constraint FK_DetalleEntrada foreign key (fk_detalleEntrada) references Detalle_Entrada(idDetalleEntrada);

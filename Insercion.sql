@@ -185,3 +185,55 @@ values (4, 'Tono', 'tono14@gmail.com', 56457845,  'T123',2,2);
 
 select * from UsuarioOperativo;
 
+
+select * from Presentacion;
+
+insert into Presentacion values ('Litro');
+insert into Presentacion values ('Gramo');
+insert into Presentacion values ('KiloGramo');
+insert into Presentacion values ('Metro');
+
+insert into Clasificacion values ('Comida');
+insert into Clasificacion values ('Bebida');
+insert into Clasificacion values ('Tela');
+
+select * from UsuarioOperativo;
+
+exec add_Producto 1, 123, 'Producto1', 'Es el Producto 1', 1, 2, 1;
+select * from Producto;
+
+
+exec add_Producto 2, 123, 'Producto2', 'Es el Producto 2', 1, 2, 1;
+exec add_Producto 3, 123, 'Producto3', 'Es el Producto 3', 1, 2, 1;
+exec add_Producto 4, 123, 'Producto4', 'Es el Producto 4', 1, 2, 1;
+exec add_Producto 5, 123, 'Producto5', 'Es el Producto 5', 1, 2, 1;
+exec add_Producto 6, 123, 'Producto6', 'Es el Producto 6', 1, 2, 1;
+exec add_Producto 7, 123, 'Producto7', 'Es el Producto 7', 1, 2, 1;
+exec add_Producto 8, 123, 'Producto8', 'Es el Producto 8', 1, 2, 1;
+exec add_Producto 9, 123, 'Producto9', 'Es el Producto 9', 1, 2, 1;
+exec add_Producto 10, 123, 'Producto10', 'Es el Producto 10', 2, 1, 1;
+exec add_Producto 11, 123, 'Producto11', 'Es el Producto 11', 2, 1, 1;
+exec add_Producto 12, 123, 'Producto12', 'Es el Producto 12', 2, 1, 1;
+exec add_Producto 13, 123, 'Producto13', 'Es el Producto 13', 2, 1, 1;
+exec add_Producto 14, 123, 'Producto14', 'Es el Producto 14', 2, 1, 1;
+exec add_Producto 15, 123, 'Producto15', 'Es el Producto 15', 2, 1, 2;
+exec add_Producto 16, 123, 'Producto16', 'Es el Producto 16', 3, 1, 2;
+exec add_Producto 17, 123, 'Producto17', 'Es el Producto 17', 3, 1, 2;
+exec add_Producto 18, 123, 'Producto18', 'Es el Producto 18', 3, 1, 2;
+exec add_Producto 19, 123, 'Producto19', 'Es el Producto 19', 3, 1, 2;
+exec add_Producto 20, 123, 'Producto20', 'Es el Producto 20', 3, 1, 2;
+exec add_Producto 21, 123, 'Producto21', 'Es el Producto 21', 4, 3, 2;
+exec add_Producto 22, 123, 'Producto22', 'Es el Producto 22', 4, 3, 2;
+exec add_Producto 23, 123, 'Producto23', 'Es el Producto 23', 4, 3, 2;
+exec add_Producto 24, 123, 'Producto24', 'Es el Producto 24', 4, 3, 2;
+exec add_Producto 25, 123, 'Producto25', 'Es el Producto 25', 4, 3, 2;
+
+
+select * from Proveedor;
+
+insert into Proveedor values(3214565, 'Tortrix', 'Direccion 1', 36542544, 'Contacto1', 'correo1@gmail.com', 520, 1, 2);
+insert into Proveedor values(3214123, 'Pepsi', 'Direccion 2', 45124565, 'Contacto2', 'correo2@gmail.com', 654.5, 1,2);
+
+insert into Proveedor values(3214565, 'Tortrix', 'Direccion 1', 36542544, 'Contacto1', 'correo1@gmail.com', 520, 2, 3);
+insert into Proveedor values(3214123, 'Pepsi', 'Direccion 2', 45124565, 'Contacto2', 'correo2@gmail.com', 654.5, 2,3);
+

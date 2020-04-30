@@ -187,6 +187,35 @@ begin
 update UsuarioOperativo set contraseña = @password where correoElectronico = @email;
 end;
 
+exec updatePassword 'R123', 'raul12@gmail.com';
+
 
 
 select * from UsuarioOperativo;
+
+
+create procedure add_Producto
+@codigoProducto int, @codigoBarra int, @nombre varchar(45), @descripcion text, @presentacion int, @clasificacion int,
+@usuarioOperativo int
+as
+begin
+insert into Producto(codigoProducto, codigoBarra, nombre, descripcion, fk_presentacion, fk_clasificacion, fk_usuarioOperativo)
+values (@codigoProducto, @codigoBarra, @nombre, @descripcion, @presentacion, @clasificacion, @usuarioOperativo);
+end;
+
+
+create procedure show_Proveedor
+@idUsuario int
+as
+begin
+select * from Proveedor as P
+where P.pk_usuario = @idUsuario;
+end;
+
+create procedure entradaBodega
+as
+begin 
+select * from EntradaBodega;
+end;
+
+select * from Bodega;
