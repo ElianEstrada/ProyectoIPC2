@@ -219,3 +219,27 @@ select * from EntradaBodega;
 end;
 
 select * from Bodega;
+
+exec show_Proveedor 2;
+
+
+
+
+create procedure show_Producto
+@idUsuario int
+as 
+begin
+select P.codigoProducto, P.codigoBarra, P.nombre as nombreProducto, P.descripcion,
+C.nombre as nombreClasificacion, Pre.nombre as nombrePresentacion, U.idUsuario from Producto as P
+join Clasificacion as C
+on P.fk_clasificacion = C.idClasificacion
+join Presentacion as Pre
+on P.fk_presentacion = Pre.idPresentacion
+join UsuarioOperativo as UO
+on P.fk_usuarioOperativo = UO.cui
+join Usuario as U
+on UO.fk_usuario = U.idUsuario
+where U.idUsuario = @idUsuario;
+end;
+
+exec show_Producto 3;

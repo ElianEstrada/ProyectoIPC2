@@ -11,10 +11,10 @@ namespace Entidad
 
         public int codigoProducto { get; set; }
         public int codigoBarras { get; set; }
-
         public string nombreProducto { get; set; }
+        public string descripcion { get; set; }
         public string presentacion { get; set; }
         public string clasificacion { get; set; }
-
+        public int usuario { get; set; }
     }
 }

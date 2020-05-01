@@ -34,9 +34,9 @@ namespace Fase3.Controllers
             return RedirectToAction("listaBodega", "Bodega");
         }
 
-        public ActionResult Producto()
+        public ActionResult Entrada()
         {
-            return RedirectToAction("Producto", "Producto");
+            return RedirectToAction("Entrada", "Entrada");
         }
 
         public ActionResult Perfil()
