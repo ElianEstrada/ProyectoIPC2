@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BodegaLogic.cs" />
+    <Compile Include="EntradaBodegaLogic.cs" />
     <Compile Include="EstanteLogic.cs" />
     <Compile Include="NivelLogic.cs" />
     <Compile Include="PasilloLogic.cs" />

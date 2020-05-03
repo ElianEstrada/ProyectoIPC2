@@ -243,3 +243,36 @@ where U.idUsuario = @idUsuario;
 end;
 
 exec show_Producto 3;
+
+create procedure add_Entrada
+@idEntrada int, @proveedor int, @fecha date, @usuarioOperativo int, @usuario int
+as
+begin
+insert into EntradaBodega (idEntrada, fechaEntrada, fk_proveedor, fk_usuarioOperativo, fk_usuario)
+values (@idEntrada, @fecha, @proveedor, @usuarioOperativo, @usuario);
+end;
+
+exec add_Entrada 1, 1234321, '2020-04-12', 1, 2;
+
+select * from EntradaBodega;
+
+select * from TipoCosteo;
+select * from LogicaLote;
+
+insert into TipoCosteo values (1, 'Saldo');
+insert into TipoCosteo values (2, 'Lote');
+
+insert into LogicaLote values (1, 'UEPS');
+insert into LogicaLote values (2, 'PEPS');
+
+select * from Detalle_Entrada;
+select * from Producto;
+
+create procedure add_detalleEntrada
+@precio decimal (5,2), @cantidad int, @producto int, @entrdad int, @costeo int, @logica int
+as
+begin
+insert into Detalle_Entrada (precio, cantidad, fk_producto, fk_entrada, fk_tipoCosteo, fk_logica)
+values (@precio, @cantidad, @producto, @entrdad, @costeo, @logica);
+end;
+

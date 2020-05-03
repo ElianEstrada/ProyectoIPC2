@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BodegaDA.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="EntradaBodegaDA.cs" />
     <Compile Include="EstanteDA.cs" />
     <Compile Include="NivelDA.cs" />
     <Compile Include="PasilloDA.cs" />
