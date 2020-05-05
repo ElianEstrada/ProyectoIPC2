@@ -343,7 +343,30 @@ select * from LogicaLote;
 select * from Detalle_Entrada;
 
 
-select * from Detalle_Entrada as DE
-join EntradaBodega as EB
+select DE.cantidad - 0 as cantidad from Detalle_Entrada as DE
+where DE.fk_producto = 1 and DE.fk_tipoCosteo = 1;
+
+
+select DE.idDetalleEntrada, De.precio, DE.cantidad, P.nombre, TC.nombreCosteo, LL.nombreLogica, DE.conteo from Detalle_Entrada as DE
+join EntradaBodega EB
 on DE.fk_entrada = EB.idEntrada
-where EB.idEntrada = 2;
+join Producto as P
+on DE.fk_producto = P.codigoProducto
+join TipoCosteo as TC
+on DE.fk_tipoCosteo = TC.idTipoCosteo
+left join LogicaLote as LL
+on DE.fk_logica = LL.idLogica
+where EB.idEntrada =2;
+
+
+select * from AsignacionNivel;
+
+create procedure add_AsigancionNivel
+@cantidad int, @nivel int, @detalle int
+as
+begin
+insert into AsignacionNivel (cantidad, fk_nivel, fk_detalleEntrada)
+values (@cantidad, @nivel, @detalle);
+end;
+
+

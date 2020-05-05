@@ -14,6 +14,7 @@ namespace Fase3.Controllers
         UsuarioOperativoLogic usuario = new UsuarioOperativoLogic();
         ProductoLogic producto = new ProductoLogic();
         DetalleEntradaLogic detalle = new DetalleEntradaLogic();
+        NivelLogic nivel = new NivelLogic();
 
         public ActionResult Entrada()
         {
@@ -24,7 +25,7 @@ namespace Fase3.Controllers
         public ActionResult registrarEntrada(int codigoEntrada, string proveedor, string fecha)
         {
             Session["idEntrada"] = codigoEntrada;
-            if(entrada.agregarEntrada(codigoEntrada, fecha, proveedor, usuario.buscarUsuario(Session["usuarioOperativo"].ToString()).cui, int.Parse(Session["usuario"].ToString())))
+            if (entrada.agregarEntrada(codigoEntrada, fecha, proveedor, usuario.buscarUsuario(Session["usuarioOperativo"].ToString()).cui, int.Parse(Session["usuario"].ToString())))
             {
                 return Content("<script> alert('Entrada Registrada');" +
                     "window.location.href='DetalleEntrada' </script>");
@@ -43,7 +44,7 @@ namespace Fase3.Controllers
 
         public ActionResult registrarDetalle(double precio, int tipoCosteo, int cantidad, int? logica, string producto)
         {
-            if(detalle.addDetalleEntrada(precio, cantidad, producto, int.Parse(Session["idEntrada"].ToString()), tipoCosteo, logica, int.Parse(Session["usuario"].ToString())))
+            if (detalle.addDetalleEntrada(precio, cantidad, producto, int.Parse(Session["idEntrada"].ToString()), tipoCosteo, logica, int.Parse(Session["usuario"].ToString())))
             {
                 return Content("<script> alert('Detalle Registrado'); " +
                     "window.location.href='DetalleEntrada' </script>");
@@ -56,10 +57,16 @@ namespace Fase3.Controllers
         }
 
 
-
         public ActionResult asignarNivel()
         {
+            ViewBag.niveles = nivel.idNiveles(int.Parse(Session["usuario"].ToString()));
             return View(detalle.listaDetalles(int.Parse(Session["idEntrada"].ToString())));
+        }
+
+        public ActionResult Asignar(int cantidad, int idDetalle, int idNivel)
+        {
+            return Content("<script> alert('Asignado');" +
+                "window.location.href='asignarNivel' </script>");
         }
 
         // GET: Entrada

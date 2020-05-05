@@ -4,7 +4,6 @@
     ViewBag.Title = "asignarNivel";
     Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
 }
-
 <h2>asignarNivel</h2>
 
 <table>
@@ -22,10 +21,76 @@
             <td> @item.idDetalleEntrada </td>
             <td> @item.producto </td>
             <td> @item.precio </td>
-            <td> @item.cantidad </td>
+            <td> @(item.cantidad - ViewBag.cantidad) </td>
             <td> @item.costeo </td>
-            <td> <a href="#" > <i class="material-icons blue-text">storage</i> </a></td>
+            <td>
+                <a class="modal-trigger" id="btnAsignar" title="Asignar Nivel"
+                   href="#modal1"
+                   data-idDetalle="@item.idDetalleEntrada"> <i class="material-icons blue-text">storage</i> </a>
+            </td>
         </tr>
     }
 </table>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class="container center">
+            <h3>Asignar Nivel</h3>
+        </div>
+        <div>
+            <div class="row">
+                <div>
+                    @using (Html.BeginForm("Asignar", "Entrada", FormMethod.Post))
+                    {
+                        <form id="modificar">
+                            <div class="col s6">
+                                Niveles:
+                                <select name="idNivel">
+                                    <option selected disabled> Escoja su Opción </option>
+                                    @foreach (var item2 in ViewBag.niveles)
+                                    {
+                                        <option> @item2.idNivel </option>
+                                    }
+                                </select>
+                                Cantidad:
+                                <input name="cantidad" type="text" placeholder="Cantidad" />
+                            </div>
+                            <div class="col s6">
+                                Id Detalle:
+                                <input type="text" id="Detalle" name="idDetalle" readonly/>
+                            </div>
+                            <div class="center">
+                                <button class="btn"> Asignar </button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>*@
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+
+    $(document).on('click', "#btnAsignar", function () {
+        let { iddetalle } = $(this).data();
+        console.log($(this).data());
+        console.log(iddetalle);
+        $(".modal-content #Detalle").val(iddetalle);
+    });
+
+</script>
 
