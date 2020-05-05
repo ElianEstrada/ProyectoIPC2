@@ -41,9 +41,25 @@ namespace Fase3.Controllers
             return View(producto.listaProductos(int.Parse(Session["usuario"].ToString())));
         }
 
+        public ActionResult registrarDetalle(double precio, int tipoCosteo, int cantidad, int? logica, string producto)
+        {
+            if(detalle.addDetalleEntrada(precio, cantidad, producto, int.Parse(Session["idEntrada"].ToString()), tipoCosteo, logica, int.Parse(Session["usuario"].ToString())))
+            {
+                return Content("<script> alert('Detalle Registrado'); " +
+                    "window.location.href='DetalleEntrada' </script>");
+            }
+            else
+            {
+                return Content("<script> alert('No se pudo registrar el detalle'); " +
+                    "window.location.href='DetalleEntrada' </script>");
+            }
+        }
+
+
+
         public ActionResult asignarNivel()
         {
-            return View(detalle.listaDetalles(1));
+            return View(detalle.listaDetalles(int.Parse(Session["idEntrada"].ToString())));
         }
 
         // GET: Entrada

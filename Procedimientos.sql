@@ -257,7 +257,7 @@ exec add_Entrada 1, 1234321, '2020-04-12', 1, 2;
 select * from EntradaBodega;
 
 delete from EntradaBodega 
-where EntradaBodega.idEntrada between 2 and 4;
+where EntradaBodega.idEntrada between 2 and 6;
 
 select * from TipoCosteo;
 select * from LogicaLote;
@@ -275,8 +275,8 @@ create procedure add_detalleEntrada
 @precio decimal (5,2), @cantidad int, @producto int, @entrdad int, @costeo int, @logica int
 as
 begin
-insert into Detalle_Entrada (precio, cantidad, fk_producto, fk_entrada, fk_tipoCosteo, fk_logica)
-values (@precio, @cantidad, @producto, @entrdad, @costeo, @logica);
+insert into Detalle_Entrada (precio, cantidad, fk_producto, fk_entrada, fk_tipoCosteo, fk_logica, conteo)
+values (@precio, @cantidad, @producto, @entrdad, @costeo, @logica, 1);
 end;
 
 exec add_detalleEntrada 12.5, 68, 1, 1, 2, 2;
@@ -336,6 +336,14 @@ on DE.fk_logica = LL.idLogica
 where EB.idEntrada =@idEntrada;
 end;
 
-exec show_DetalleEntrada 1;
+exec show_DetalleEntrada 2;
+
+select * from LogicaLote;
 
 select * from Detalle_Entrada;
+
+
+select * from Detalle_Entrada as DE
+join EntradaBodega as EB
+on DE.fk_entrada = EB.idEntrada
+where EB.idEntrada = 2;

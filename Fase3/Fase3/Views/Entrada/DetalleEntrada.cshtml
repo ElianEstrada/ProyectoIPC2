@@ -12,46 +12,49 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title"> Detalle de la Entrega</span>
-                <form>
-                    <div class="row">
-                        <div class="col m4">
-                            Precio:
-                            <input type="number" step="0.01" required placeholder="Precio" name="precio" />
-                            Tipo de Costeo:
-                            <select required name="tipoCosteo">
-                                <option selected disabled> Elije tu Opción</option>
-                                <option> Saldo</option>
-                                <option> Lote </option>
-                            </select>
+                @using (Html.BeginForm("registrarDetalle", "Entrada", FormMethod.Post))
+                {
+                    <form>
+                        <div class="row">
+                            <div class="col m4">
+                                Precio:
+                                <input type="number" step="0.01" required placeholder="Precio" name="precio" />
+                                Tipo de Costeo:
+                                <select required name="tipoCosteo">
+                                    <option selected disabled> Elije tu Opción</option>
+                                    <option value="1"> Saldo</option>
+                                    <option value="2"> Lote </option>
+                                </select>
+                            </div>
+                            <div class="col m4">
+                                Cantidad:
+                                <input type="number" step="1" required placeholder="Cantidad" name="cantidad" />
+                                Tipo de Lógica:
+                                <select name="logica">
+                                    <option selected disabled value="0"> Elija su Opción</option>
+                                    <option value="1"> UEPS</option>
+                                    <option value="2">PEPS</option>
+                                </select>
+                            </div>
+                            <div class="col m4">
+                                Producto:
+                                <select required name="producto">
+                                    <option selected readonly="true"> Elije tu Opción </option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option> @item.codigoProducto, @item.nombreProducto </option>
+                                    }
+                                </select>
+                            </div>
                         </div>
-                        <div class="col m4">
-                            Cantidad:
-                            <input type="number" step="1" required placeholder="Cantidad" name="cantidad" />
-                            Tipo de Lógica:
-                            <select name="logica">
-                                <option selected disabled> Elija su Opción</option>
-                                <option> UEPS</option>
-                                <option>PEPS</option>
-                            </select>
+                        <div class="row">
+                            <div class="col m12 center">
+                                <button class="btn green"> Agregar <i class="material-icons right"> add_circle</i> </button>
+                                <a class="btn blue" href="asignarNivel"> Asignar Productos a Bodegas <i class="material-icons right">assignment</i> </a>
+                            </div>
                         </div>
-                        <div class="col m4">
-                            Producto:
-                            <select required name="producto">
-                                <option selected disabled> Elije tu Opción </option>
-                                @foreach (var item in Model) 
-                                {
-                                    <option> @item.codigoProducto, @item.nombreProducto </option>
-                                }
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col m12 center">
-                            <button class="btn green"> Agregar <i class="material-icons right"> add_circle</i> </button>
-                            <a class="btn blue" href="asignarNivel"> Asignar Productos a Bodegas <i class="material-icons right">assignment</i> </a>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                }
             </div>
         </div>
     </div>

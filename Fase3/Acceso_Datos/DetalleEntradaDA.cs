@@ -77,23 +77,23 @@ namespace Acceso_Datos
         }
 
 
-        public bool addDetalleEntrada(double precio, int cantidad, int producto, int entrada, int costeo, int logica, int idUsuario)
+        public bool addDetalleEntrada(double precio, int cantidad, int producto, int entrada, int costeo, int? logica, int idUsuario)
         {
 
             try
             {
                 int detalle = existeProducto(producto, idUsuario, costeo);
 
-                if (detalle != 0){
+                if (detalle == 0){
 
                     cmd = new SqlCommand("add_detalleEntrada", conexion.abrirConexion());
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@precio", precio);
                     cmd.Parameters.AddWithValue("@cantidad", cantidad);
                     cmd.Parameters.AddWithValue("@producto", producto);
-                    cmd.Parameters.AddWithValue("@entrada", entrada);
+                    cmd.Parameters.AddWithValue("@entrdad", entrada);
                     cmd.Parameters.AddWithValue("@costeo", costeo);
-                    if(logica != 0)
+                    if(logica != null)
                     {
                         cmd.Parameters.AddWithValue("@logica", logica);
                     }
