@@ -256,6 +256,9 @@ exec add_Entrada 1, 1234321, '2020-04-12', 1, 2;
 
 select * from EntradaBodega;
 
+delete from EntradaBodega 
+where EntradaBodega.idEntrada between 2 and 4;
+
 select * from TipoCosteo;
 select * from LogicaLote;
 
@@ -276,3 +279,63 @@ insert into Detalle_Entrada (precio, cantidad, fk_producto, fk_entrada, fk_tipoC
 values (@precio, @cantidad, @producto, @entrdad, @costeo, @logica);
 end;
 
+exec add_detalleEntrada 12.5, 68, 1, 1, 2, 2;
+
+update Detalle_Entrada set conteo = 1 
+where idDetalleEntrada between 1 and 4;
+
+alter table Detalle_Entrada add conteo int;
+
+create procedure existeProducto
+@idProducto int, @idUsuario int, @idCosteo int
+as
+begin
+select * from Producto as P
+join Detalle_Entrada as DE
+on DE.fk_producto = P.codigoProducto
+join EntradaBodega as EB
+on DE.fk_entrada = EB.idEntrada
+join TipoContacto as TC
+on DE.fk_tipoCosteo = TC.idTipoContacto
+where P.codigoProducto = @idProducto
+and EB.fk_usuario = @idUsuario
+and TC.idTipoContacto = @idCosteo;
+end;
+
+
+exec existeProducto 1, 2, 2;
+
+
+update Detalle_Entrada set precio = 6.85, cantidad += 20
+where idDetalleEntrada = 1;
+
+create procedure modificarPrecio
+@precio decimal(5,2), @idDetalle int, @cantidad int
+as
+begin
+update Detalle_Entrada set precio += @precio, cantidad += @cantidad, conteo += 1
+where idDetalleEntrada = @idDetalle;
+end;
+
+exec modificarPrecio 13.43, 1, 15;
+
+
+create procedure show_DetalleEntrada
+@idEntrada int
+as
+begin
+select DE.idDetalleEntrada, De.precio, DE.cantidad, P.nombre, TC.nombreCosteo, LL.nombreLogica, DE.conteo from Detalle_Entrada as DE
+join EntradaBodega EB
+on DE.fk_entrada = EB.idEntrada
+join Producto as P
+on DE.fk_producto = P.codigoProducto
+join TipoCosteo as TC
+on DE.fk_tipoCosteo = TC.idTipoCosteo
+left join LogicaLote as LL
+on DE.fk_logica = LL.idLogica
+where EB.idEntrada =@idEntrada;
+end;
+
+exec show_DetalleEntrada 1;
+
+select * from Detalle_Entrada;

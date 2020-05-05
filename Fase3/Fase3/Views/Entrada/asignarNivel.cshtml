@@ -1,0 +1,31 @@
+﻿@model LinkedList<Entidad.DetalleEntrada>
+
+@{
+    ViewBag.Title = "asignarNivel";
+    Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
+}
+
+<h2>asignarNivel</h2>
+
+<table>
+    <tr>
+        <th> Id </th>
+        <th> Producto </th>
+        <th> Precio </th>
+        <th> Cantidad </th>
+        <th> Costeo </th>
+        <th> Acciones </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @item.idDetalleEntrada </td>
+            <td> @item.producto </td>
+            <td> @item.precio </td>
+            <td> @item.cantidad </td>
+            <td> @item.costeo </td>
+            <td> <a href="#" > <i class="material-icons blue-text">storage</i> </a></td>
+        </tr>
+    }
+</table>
+

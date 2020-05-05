@@ -13,6 +13,7 @@ namespace Fase3.Controllers
         EntradaBodegaLogic entrada = new EntradaBodegaLogic();
         UsuarioOperativoLogic usuario = new UsuarioOperativoLogic();
         ProductoLogic producto = new ProductoLogic();
+        DetalleEntradaLogic detalle = new DetalleEntradaLogic();
 
         public ActionResult Entrada()
         {
@@ -38,6 +39,11 @@ namespace Fase3.Controllers
         public ActionResult DetalleEntrada()
         {
             return View(producto.listaProductos(int.Parse(Session["usuario"].ToString())));
+        }
+
+        public ActionResult asignarNivel()
+        {
+            return View(detalle.listaDetalles(1));
         }
 
         // GET: Entrada

@@ -38,7 +38,7 @@
                             Producto:
                             <select required name="producto">
                                 <option selected disabled> Elije tu Opción </option>
-                                @foreach (var item in Model)
+                                @foreach (var item in Model) 
                                 {
                                     <option> @item.codigoProducto, @item.nombreProducto </option>
                                 }
@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col m12 center">
                             <button class="btn green"> Agregar <i class="material-icons right"> add_circle</i> </button>
-                            <a class="btn blue" href="#"> Asignar Productos a Bodegas <i class="material-icons right">assignment</i> </a>
+                            <a class="btn blue" href="asignarNivel"> Asignar Productos a Bodegas <i class="material-icons right">assignment</i> </a>
                         </div>
                     </div>
                 </form>

@@ -123,6 +123,7 @@
     <Content Include="Views\UsuarioOperativo\Perfil.cshtml" />
     <Content Include="Views\Entrada\Entrada.cshtml" />
     <Content Include="Views\Entrada\DetalleEntrada.cshtml" />
+    <Content Include="Views\Entrada\asignarNivel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
