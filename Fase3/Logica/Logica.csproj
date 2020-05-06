@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsignarNivelLogic.cs" />
     <Compile Include="BodegaLogic.cs" />
     <Compile Include="DetalleEntradaLogic.cs" />
     <Compile Include="EntradaBodegaLogic.cs" />

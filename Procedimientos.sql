@@ -257,7 +257,7 @@ exec add_Entrada 1, 1234321, '2020-04-12', 1, 2;
 select * from EntradaBodega;
 
 delete from EntradaBodega 
-where EntradaBodega.idEntrada between 2 and 6;
+where EntradaBodega.idEntrada between 2 and 14;
 
 select * from TipoCosteo;
 select * from LogicaLote;
@@ -370,3 +370,4 @@ values (@cantidad, @nivel, @detalle);
 end;
 
 
+select * from Nivel;

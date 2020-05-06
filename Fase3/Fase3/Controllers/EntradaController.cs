@@ -15,6 +15,7 @@ namespace Fase3.Controllers
         ProductoLogic producto = new ProductoLogic();
         DetalleEntradaLogic detalle = new DetalleEntradaLogic();
         NivelLogic nivel = new NivelLogic();
+        AsignarNivelLogic asignar = new AsignarNivelLogic();
 
         public ActionResult Entrada()
         {
@@ -65,8 +66,16 @@ namespace Fase3.Controllers
 
         public ActionResult Asignar(int cantidad, int idDetalle, int idNivel)
         {
-            return Content("<script> alert('Asignado');" +
+            if (asignar.asignarNivel(cantidad, idNivel, idDetalle))
+            {
+                return Content("<script> alert('Asignado');" +
                 "window.location.href='asignarNivel' </script>");
+            }
+            else
+            {
+                return Content("<script> alert('No se pudo asignar');" +
+                "window.location.href='asignarNivel' </script>");
+            }
         }
 
         // GET: Entrada
