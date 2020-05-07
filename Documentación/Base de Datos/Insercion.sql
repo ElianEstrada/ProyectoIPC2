@@ -241,6 +241,8 @@ select * from Categoria;
 insert into Categoria values('ABV1', 'Descripcion1');
 select * from Cliente;
 
+select * from UsuarioOperativo;
+
 insert into Cliente values(1234567, 'Cliente1', 'Direccion1', 12345678, 'Contacto1', 'correo1@gmail.com', 1, 1, 2);
 insert into Cliente values(1234561, 'Cliente2', 'Direccion2', 12345678, 'Contacto2', 'correo2@gmail.com', 1, 4, 2);
 insert into Cliente values(1234562, 'Cliente3', 'Direccion3', 12345678, 'Contacto3', 'correo3@gmail.com', 1, 4, 2);
