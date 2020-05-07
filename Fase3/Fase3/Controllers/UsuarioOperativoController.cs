@@ -39,6 +39,11 @@ namespace Fase3.Controllers
             return RedirectToAction("Entrada", "Entrada");
         }
 
+        public ActionResult Salida()
+        {
+            return RedirectToAction("Salida", "Salida");
+        }
+
         public ActionResult Perfil()
         {
             return View(usuario.buscarUsuario(Session["usuarioOperativo"].ToString()));

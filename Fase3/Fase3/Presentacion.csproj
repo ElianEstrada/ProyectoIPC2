@@ -99,6 +99,7 @@
     <Compile Include="Controllers\BodegaController.cs" />
     <Compile Include="Controllers\EntradaController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\SalidaController.cs" />
     <Compile Include="Controllers\UsuarioOperativoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -124,6 +125,8 @@
     <Content Include="Views\Entrada\Entrada.cshtml" />
     <Content Include="Views\Entrada\DetalleEntrada.cshtml" />
     <Content Include="Views\Entrada\asignarNivel.cshtml" />
+    <Content Include="Views\Salida\Salida.cshtml" />
+    <Content Include="Views\Salida\DetalleSalida.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

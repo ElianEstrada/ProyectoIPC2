@@ -50,7 +50,7 @@ namespace Acceso_Datos
             return detalleEntradas;
         }
 
-        public int existeProducto(int idProducto, int idUsuario, int costeo)
+        public int existeProducto(int idProducto, int idUsuario, int costeo, int idEntrada)
         {
 
             try
@@ -60,6 +60,7 @@ namespace Acceso_Datos
                 cmd.Parameters.AddWithValue("@idProducto", idProducto);
                 cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
                 cmd.Parameters.AddWithValue("@idCosteo", costeo);
+                cmd.Parameters.AddWithValue("@idEntrada", idEntrada);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -82,7 +83,7 @@ namespace Acceso_Datos
 
             try
             {
-                int detalle = existeProducto(producto, idUsuario, costeo);
+                int detalle = existeProducto(producto, idUsuario, costeo, entrada);
 
                 if (detalle == 0){
 

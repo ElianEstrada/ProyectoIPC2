@@ -341,6 +341,7 @@ create table Detalle_Entrada(
 	fk_logica int
 );
 
+alter table Detalle_Entrada add subtotal decimal(10, 2);
 alter table Detalle_Entrada add constraint FK_ProductoEntrada foreign key (fk_producto) references Producto(codigoProducto);
 alter table Detalle_Entrada add constraint FK_Entrada foreign key (fk_entrada) references EntradaBodega(idEntrada);
 alter table Detalle_Entrada add constraint FK_Costeo foreign key (fk_tipoCosteo) references TipoCosteo(idTipoCosteo);
@@ -355,3 +356,26 @@ create table AsignacionNivel(
 
 alter table AsignacionNivel add constraint FK_NivelEntrada foreign key (fk_nivel) references Nivel(idNivel);
 alter table AsignacionNivel add constraint FK_DetalleEntrada foreign key (fk_detalleEntrada) references Detalle_Entrada(idDetalleEntrada);
+
+create table SalidaBodega(
+	idSalidaBodega int primary key not null,
+	fechaSalida date not null, 
+	fk_cliente bigint not null,
+	fk_usuario int not null,
+	fk_usuarioOperativo int not null
+);
+
+alter table SalidaBodega add constraint FK_cliente foreign key (fk_cliente, fk_usuario) references Cliente(nit, pk_usuario);
+alter table SalidaBodega add constraint Fk_UsuarioOperativoSalida foreign key (fk_usuarioOperativo) references UsuarioOperativo(cui);
+
+
+create table Detalle_Salida(
+	idDetalleSalida int identity(1,1) primary key not null,
+	cantidadSalida int not null,
+	fk_salidaBodega int not null,
+	fk_asignacionNivel int not null
+);
+
+
+alter table Detalle_Salida add constraint FK_salidaBodega foreign key(fk_salidaBodega) references SalidaBodega(idSalidaBodega);
+alter table Detalle_Salida add constraint FK_asignacionNivel foreign key(fk_salidaBodega) references AsignacionNivel(idAsignacionNivel);

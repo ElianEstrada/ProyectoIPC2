@@ -1,0 +1,45 @@
+﻿@model LinkedList<Entidad.Cliente>
+
+@{
+    ViewBag.Title = "Salida";
+    Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
+}
+
+<h2>Salida</h2>
+
+<div class="row">
+    <div class="col m12">
+        <div class="card z-depth-3">
+            <div class="card-content">
+                <span class="card-title"> Registrar Salida </span>
+                @using (Html.BeginForm("registrarSalida", "Salida", FormMethod.Post))
+                {
+                    <form>
+                        <div class="row">
+                            <div class="col m6">
+                                Numero Salida:
+                                <input required type="text" name="idSalidaBodega" placeholder="Código de Salida"/>
+                                Cliente:
+                                <select name="cliente" required>
+                                    <option selected disabled>Elija Su Opción</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option> @item.nit, @item.nombre </option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col m6">
+                                Fecha Salida:
+                                <input type="date" name="fecha" required />
+                            </div>
+                            <button class="btn green">
+                                Registrar Salida
+                                <i class="material-icons right"> add_circle </i>
+                            </button>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>

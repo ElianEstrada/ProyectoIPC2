@@ -237,3 +237,26 @@ insert into Proveedor values(3214123, 'Pepsi', 'Direccion 2', 45124565, 'Contact
 insert into Proveedor values(3214565, 'Tortrix', 'Direccion 1', 36542544, 'Contacto1', 'correo1@gmail.com', 520, 2, 3);
 insert into Proveedor values(3214123, 'Pepsi', 'Direccion 2', 45124565, 'Contacto2', 'correo2@gmail.com', 654.5, 2,3);
 
+select * from Categoria;
+insert into Categoria values('ABV1', 'Descripcion1');
+select * from Cliente;
+
+insert into Cliente values(1234567, 'Cliente1', 'Direccion1', 12345678, 'Contacto1', 'correo1@gmail.com', 1, 1, 2);
+insert into Cliente values(1234561, 'Cliente2', 'Direccion2', 12345678, 'Contacto2', 'correo2@gmail.com', 1, 4, 2);
+insert into Cliente values(1234562, 'Cliente3', 'Direccion3', 12345678, 'Contacto3', 'correo3@gmail.com', 1, 4, 2);
+insert into Cliente values(1234563, 'Cliente4', 'Direccion4', 12345678, 'Contacto4', 'correo4@gmail.com', 1, 1, 2);
+insert into Cliente values(1234564, 'Cliente5', 'Direccion5', 12345678, 'Contacto5', 'correo5@gmail.com', 1, 4, 2);
+insert into Cliente values(1234565, 'Cliente6', 'Direccion6', 12345678, 'Contacto6', 'correo6@gmail.com', 1, 4, 2);
+insert into Cliente values(1234566, 'Cliente7', 'Direccion7', 12345678, 'Contacto7', 'correo7@gmail.com', 1, 1, 2);
+insert into Cliente values(1234568, 'Cliente8', 'Direccion8', 12345678, 'Contacto8', 'correo8@gmail.com', 1, 1, 2);
+insert into Cliente values(1234569, 'Cliente9', 'Direccion9', 12345678, 'Contacto9', 'correo9@gmail.com', 1, 1, 2);
+
+insert into Cliente values(1234567, 'Cliente1', 'Direccion1', 12345678, 'Contacto1', 'correo1@gmail.com', 1, 2, 3);
+insert into Cliente values(1234561, 'Cliente2', 'Direccion2', 12345678, 'Contacto2', 'correo2@gmail.com', 1, 3, 3);
+insert into Cliente values(1234562, 'Cliente3', 'Direccion3', 12345678, 'Contacto3', 'correo3@gmail.com', 1, 2, 3);
+insert into Cliente values(1234563, 'Cliente4', 'Direccion4', 12345678, 'Contacto4', 'correo4@gmail.com', 1, 3, 3);
+insert into Cliente values(1234564, 'Cliente5', 'Direccion5', 12345678, 'Contacto5', 'correo5@gmail.com', 1, 3, 3);
+insert into Cliente values(1234565, 'Cliente6', 'Direccion6', 12345678, 'Contacto6', 'correo6@gmail.com', 1, 2, 3);
+insert into Cliente values(1234566, 'Cliente7', 'Direccion7', 12345678, 'Contacto7', 'correo7@gmail.com', 1, 2, 3);
+insert into Cliente values(1234568, 'Cliente8', 'Direccion8', 12345678, 'Contacto8', 'correo8@gmail.com', 1, 2, 3);
+insert into Cliente values(1234569, 'Cliente9', 'Direccion9', 12345678, 'Contacto9', 'correo9@gmail.com', 1, 2, 3);

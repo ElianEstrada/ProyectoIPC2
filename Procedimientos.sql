@@ -256,8 +256,9 @@ exec add_Entrada 1, 1234321, '2020-04-12', 1, 2;
 
 select * from EntradaBodega;
 
-delete from EntradaBodega 
-where EntradaBodega.idEntrada between 2 and 14;
+delete from EntradaBodega;
+delete from Detalle_Entrada;
+delete from AsignacionNivel;
 
 select * from TipoCosteo;
 select * from LogicaLote;
@@ -275,8 +276,8 @@ create procedure add_detalleEntrada
 @precio decimal (5,2), @cantidad int, @producto int, @entrdad int, @costeo int, @logica int
 as
 begin
-insert into Detalle_Entrada (precio, cantidad, fk_producto, fk_entrada, fk_tipoCosteo, fk_logica, conteo)
-values (@precio, @cantidad, @producto, @entrdad, @costeo, @logica, 1);
+insert into Detalle_Entrada (precio, cantidad, subtotal, fk_producto, fk_entrada, fk_tipoCosteo, fk_logica, conteo)
+values (@precio, @cantidad, (@precio*@cantidad), @producto, @entrdad, @costeo, @logica, 1);
 end;
 
 exec add_detalleEntrada 12.5, 68, 1, 1, 2, 2;
@@ -287,7 +288,7 @@ where idDetalleEntrada between 1 and 4;
 alter table Detalle_Entrada add conteo int;
 
 create procedure existeProducto
-@idProducto int, @idUsuario int, @idCosteo int
+@idProducto int, @idUsuario int, @idCosteo int, @idEntrada int
 as
 begin
 select * from Producto as P
@@ -299,11 +300,12 @@ join TipoContacto as TC
 on DE.fk_tipoCosteo = TC.idTipoContacto
 where P.codigoProducto = @idProducto
 and EB.fk_usuario = @idUsuario
-and TC.idTipoContacto = @idCosteo;
+and TC.idTipoContacto = @idCosteo
+and EB.idEntrada = @idEntrada;
 end;
 
 
-exec existeProducto 1, 2, 2;
+exec existeProducto 1, 2, 2, 2;
 
 
 update Detalle_Entrada set precio = 6.85, cantidad += 20
@@ -313,11 +315,11 @@ create procedure modificarPrecio
 @precio decimal(5,2), @idDetalle int, @cantidad int
 as
 begin
-update Detalle_Entrada set precio += @precio, cantidad += @cantidad, conteo += 1
+update Detalle_Entrada set precio += @precio, cantidad += @cantidad, conteo += 1, subtotal += (@precio * @cantidad)
 where idDetalleEntrada = @idDetalle;
 end;
 
-exec modificarPrecio 13.43, 1, 15;
+exec modificarPrecio 13.43, 24, 15;
 
 
 create procedure show_DetalleEntrada
@@ -371,3 +373,67 @@ end;
 
 
 select * from Nivel;
+
+
+create procedure add_SalidaBodega
+@idSalidaBodega int, @fecha date, @cliente int, @usuarioOperativo int, @usuario int
+as
+begin
+insert into SalidaBodega(idSalidaBodega, fechaSalida, fk_cliente, fk_usuario, fk_usuarioOperativo)
+values (@idSalidaBodega, @fecha,  @cliente, @usuario, @usuarioOperativo);
+end;
+
+select * from SalidaBodega;
+
+select * from Cliente;
+
+create procedure show_Cliente
+@idUsuario int
+as
+begin
+select * from Cliente as C
+where C.pk_usuario = @idUsuario;
+end;
+
+exec show_Cliente 2;
+
+
+select DISTINCT P.nombre, DE.precio, DE.cantidad from AsignacionNivel as AN
+join Detalle_Entrada as DE
+on AN.fk_detalleEntrada = DE.idDetalleEntrada
+join Producto as P
+on DE.fk_producto = P.codigoProducto;
+
+
+Select * from Detalle_Entrada as DE
+join Producto as P
+on DE.fk_producto = P.codigoProducto;
+
+
+select * from Detalle_Entrada as DE
+join EntradaBodega as EB
+on DE.fk_entrada = EB.idEntrada;
+
+
+
+
+create procedure productoAsignados
+@idUsuario int
+as
+begin
+select P.codigoProducto, P.nombre as NombreProducto, sum(precio) as Precio, sum(conteo) as Conteo, Sum(cantidad) as Cantidad, Tc.nombreCosteo, 
+LL.nombreLogica from Detalle_Entrada as DE
+join Producto as P
+on DE.fk_producto = P.codigoProducto
+join TipoCosteo as TC
+on DE.fk_tipoCosteo = TC.idTipoCosteo
+left join LogicaLote as LL
+on DE.fk_logica = LL.idLogica
+join EntradaBodega as EB
+on De.fk_entrada = EB.idEntrada
+where EB.fk_usuario = @idUsuario
+group by fk_producto, TC.nombreCosteo, P.nombre, P.codigoProducto, LL.nombreLogica;
+end;
+
+
+exec productoAsignados 2;
