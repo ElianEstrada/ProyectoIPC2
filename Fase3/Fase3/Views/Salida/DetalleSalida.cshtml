@@ -1,4 +1,5 @@
-﻿
+﻿@model LinkedList<Entidad.DetalleEntrada>
+
 @{
     ViewBag.Title = "DetalleSalida";
     Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
@@ -6,3 +7,65 @@
 
 <h2>DetalleSalida</h2>
 
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title"> Productos por Saldo </span>
+        <table class="striped">
+            <tr>
+                <th> codigoProducto </th>
+                <th> Producto </th>
+                <th> Precio </th>
+                <th> Cantidad </th>
+                <th> Costeo </th>
+                <th> Acciones </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                if (item.costeo.Equals("Saldo"))
+                {
+                    <tr>
+                        <td> @item.idDetalleEntrada </td>
+                        <td> @item.producto </td>
+                        <td> @String.Format("{0:c}", Math.Round(item.precio, 2))  </td>
+                        <td> @item.cantidad </td>
+                        <td> @item.costeo </td>
+                        <td> <a href="#" title="Agregar"> <i class="material-icons green-text"> add_circle </i></a> </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title"> Productos por Lote </span>
+        <table class="striped">
+            <tr>
+                <th> codigoProducto </th>
+                <th> Producto </th>
+                <th> Precio </th>
+                <th> Cantidad </th>
+                <th> Costeo </th>
+                <th> Lógica </th>
+                <th> Acciones </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                if (item.costeo.Equals("Lote"))
+                {
+                    <tr>
+                        <td> @item.idDetalleEntrada </td>
+                        <td> @item.producto </td>
+                        <td> @String.Format("{0:c}", Math.Round(item.precio, 2))  </td>
+                        <td> @item.cantidad </td>
+                        <td> @item.costeo </td>
+                        <td> @item.logica </td>
+                        <td> <a href="#" title="Agregar"> <i class="material-icons green-text"> add_circle </i></a> </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

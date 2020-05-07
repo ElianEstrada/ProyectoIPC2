@@ -437,3 +437,19 @@ end;
 
 
 exec productoAsignados 2;
+
+
+select P.codigoProducto, P.nombre, N.idNivel, TC.nombreCosteo, AN.cantidad from AsignacionNivel as AN
+join Nivel as N
+on AN.fk_nivel = N.idNivel
+join Detalle_Entrada as DE
+on AN.fk_detalleEntrada = DE.idDetalleEntrada
+join Producto as P
+on DE.fk_producto = P.codigoProducto
+join TipoCosteo as TC
+on DE.fk_tipoCosteo = TC.idTipoCosteo
+join EntradaBodega as EB
+on DE.fk_entrada = EB.idEntrada
+where TC.nombreCosteo = 'Saldo'
+and EB.fk_usuario = 2;
+

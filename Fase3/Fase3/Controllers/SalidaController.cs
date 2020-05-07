@@ -13,6 +13,7 @@ namespace Fase3.Controllers
         ClienteLogic cliente = new ClienteLogic();
         SalidaBodegaLogic salida = new SalidaBodegaLogic();
         UsuarioOperativoLogic usuario = new UsuarioOperativoLogic();
+        DetalleEntradaLogic detalleEntrada = new DetalleEntradaLogic();
         
 
         public ActionResult Salida()
@@ -38,7 +39,7 @@ namespace Fase3.Controllers
 
         public ActionResult DetalleSalida()
         {
-            return View();
+            return View(detalleEntrada.productosAsignados(int.Parse(Session["usuario"].ToString())));
         }
 
         // GET: Salida

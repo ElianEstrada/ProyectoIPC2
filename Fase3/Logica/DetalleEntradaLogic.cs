@@ -32,5 +32,10 @@ namespace Logica
             return int.Parse(id[0]);
         }
 
+
+        public LinkedList<DetalleEntrada> productosAsignados(int idUsuario)
+        {
+            return detalleEntradaDA.productosAsignados(idUsuario);
+        }
     }
 }

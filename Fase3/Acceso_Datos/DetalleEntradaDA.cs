@@ -140,5 +140,42 @@ namespace Acceso_Datos
             return false;
         }
 
+
+        public LinkedList<DetalleEntrada> productosAsignados(int idUsuario)
+        {
+            LinkedList<DetalleEntrada> detalleEntradas = new LinkedList<DetalleEntrada>();
+
+            try
+            {
+
+                cmd = new SqlCommand("productoAsignados", conexion.abrirConexion());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    DetalleEntrada detalle = new DetalleEntrada();
+                    detalle.idDetalleEntrada = int.Parse(reader["codigoProducto"].ToString());
+                    detalle.producto = reader["NombreProducto"].ToString();
+                    detalle.precio = double.Parse(reader["Precio"].ToString()) / int.Parse(reader["Conteo"].ToString());
+                    detalle.cantidad = int.Parse(reader["Cantidad"].ToString());
+                    detalle.costeo = reader["nombreCosteo"].ToString();
+                    detalle.logica = reader["nombreLogica"].ToString();
+
+                    detalleEntradas.AddLast(detalle);
+                }
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+
+            return detalleEntradas;
+        }
+
     }
 }

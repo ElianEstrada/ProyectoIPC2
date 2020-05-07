@@ -45,6 +45,7 @@
     <Compile Include="Bodega.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DetalleEntrada.cs" />
+    <Compile Include="DetalleSalida.cs" />
     <Compile Include="EntradaBodega.cs" />
     <Compile Include="Estante.cs" />
     <Compile Include="Nivel.cs" />
