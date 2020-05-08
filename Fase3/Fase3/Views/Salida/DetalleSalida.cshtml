@@ -30,7 +30,13 @@
                         <td> @String.Format("{0:c}", Math.Round(item.precio, 2))  </td>
                         <td> @item.cantidad </td>
                         <td> @item.costeo </td>
-                        <td> <a href="#" title="Agregar"> <i class="material-icons green-text"> add_circle </i></a> </td>
+                        <td>
+                            <a href="#">
+                                <i class="material-icons">
+                                    @Html.ActionLink("add_circle", "ubicaciones", new { codigoProducto = item.idDetalleEntrada }, new { @class = "green-text", @title = "Agregar" })
+                                </i>
+                            </a>
+                        </td>
                     </tr>
                 }
             }

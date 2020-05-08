@@ -14,7 +14,10 @@ namespace Fase3.Controllers
         SalidaBodegaLogic salida = new SalidaBodegaLogic();
         UsuarioOperativoLogic usuario = new UsuarioOperativoLogic();
         DetalleEntradaLogic detalleEntrada = new DetalleEntradaLogic();
-        
+        UbicacionLogic ubicacion = new UbicacionLogic();
+        AsignarNivelLogic asignacion = new AsignarNivelLogic();
+        DetalleSalidaLogic detalleSalida = new DetalleSalidaLogic();
+
 
         public ActionResult Salida()
         {
@@ -39,7 +42,29 @@ namespace Fase3.Controllers
 
         public ActionResult DetalleSalida()
         {
-            return View(detalleEntrada.productosAsignados(int.Parse(Session["usuario"].ToString())));
+            return View(detalleEntrada.productosAsignados(/*int.Parse(Session["usuario"].ToString())*/2));
+        }
+
+        public ActionResult ubicaciones(int codigoProducto)
+        {
+            Session["codigoProducto"] = codigoProducto;
+            return View(ubicacion.listaUbicaciones(/*int.Parse(Session["usuario"].ToString())*/2, codigoProducto));
+        }
+
+        public ActionResult agregarDetalleSalida(int idNivel, int cantidad)
+        {
+            if (detalleSalida.add_DetalleSalida(cantidad, int.Parse(Session["idSalida"].ToString()), asignacion.idAsignacion(idNivel, int.Parse(Session["codigoProducto"].ToString()))))
+            {
+                return Content("<script> alert('Agregado al detalle');" +
+                    "window.location.href='ubicaciones' </script>");
+            }
+            else
+            {
+
+                return Content("<script> alert('No se pudo agregar');" +
+                    "window.location.href='ubicaciones' </script>");
+
+            }
         }
 
         // GET: Salida

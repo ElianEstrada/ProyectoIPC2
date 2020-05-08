@@ -43,5 +43,33 @@ namespace Acceso_Datos
             return false;
         }
 
+
+        public int searchAsginacion(int nivel, int idProducto)
+        {
+
+            try
+            {
+
+                cmd = new SqlCommand("searchAsignacionNivel", conexion.abrirConexion());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nivel", nivel);
+                cmd.Parameters.AddWithValue("@idProducto", idProducto);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return int.Parse(reader["idAsignacionNivel"].ToString());
+                }
+
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+            return 0;
+        }
+
     }
 }

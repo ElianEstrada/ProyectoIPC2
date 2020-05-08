@@ -1,0 +1,93 @@
+﻿@model LinkedList<Entidad.Ubicacion>
+
+@{
+    ViewBag.Title = "ubicaciones";
+    Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
+}
+
+<h2>ubicaciones</h2>
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title"> Ubicación del Producto </span>
+        <table class="striped">
+            <tr>
+                <th> Bodega </th>
+                <th> Pasillo </th>
+                <th> Estante </th>
+                <th> Nivel </th>
+                <th> Stock </th>
+                <th> Acción </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                if (item.canidad != 0)
+                {
+                    <tr>
+                        <td> @item.bodega </td>
+                        <td> @item.pasillo </td>
+                        <td> @item.estante </td>
+                        <td> @item.nivel </td>
+                        <td> @item.canidad </td>
+                        <td> <a href="#modal1" title="Agregar a Salida" id="btnAgregar" class="modal-trigger"
+                                data-nivel="@item.nivel"> <i class="material-icons green-text"> add_circle </i></a> </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class="container center">
+            <h3>Agregar al Detalle</h3>
+        </div>
+        <div>
+            <div class="row">
+                <div>
+                    @using (Html.BeginForm("agregarDetalleSalida", "Salida", FormMethod.Post))
+                    {
+                        <form id="modificar">
+                            <div class="col s6">
+                                Id Nivel:
+                                <input type="text" name="idNivel" id="idNivel" readonly />
+                            </div>
+                            <div class="col s6">
+                                Cantidad
+                                <input type="number" step="1" placeholder="Cantidad" name="cantidad"/>
+                            </div>
+                            <div class="center">
+                                <button class="btn"> Agregar </button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>*@
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+
+    $(document).on('click', "#btnAgregar", function () {
+        let { nivel } = $(this).data();
+        console.log(nivel);
+        $(".modal-content #idNivel").val(nivel);
+    });
+
+</script>

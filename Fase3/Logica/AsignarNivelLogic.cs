@@ -17,5 +17,10 @@ namespace Logica
             return asignarNivelDA.asignarNivel(cantidad, nivel, detalle);
         }
 
+        public int idAsignacion(int nivel, int idProducto)
+        {
+            return asignarNivelDA.searchAsginacion(nivel, idProducto);
+        }
+
     }
 }

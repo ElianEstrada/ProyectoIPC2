@@ -439,7 +439,7 @@ end;
 exec productoAsignados 2;
 
 
-select P.codigoProducto, P.nombre, N.idNivel, TC.nombreCosteo, AN.cantidad from AsignacionNivel as AN
+select P.codigoProducto, P.nombre,B.nombreBodega, Pa.idPasillo, E.letra, N.idNivel, AN.cantidad from AsignacionNivel as AN
 join Nivel as N
 on AN.fk_nivel = N.idNivel
 join Detalle_Entrada as DE
@@ -450,6 +450,98 @@ join TipoCosteo as TC
 on DE.fk_tipoCosteo = TC.idTipoCosteo
 join EntradaBodega as EB
 on DE.fk_entrada = EB.idEntrada
+join Estante as E
+on N.fk_estante = E.letra
+join Pasillo as Pa
+on E.fk_pasillo = Pa.idPasillo
+join Bodega as B
+on Pa.fk_bodega = B.idBodega
 where TC.nombreCosteo = 'Saldo'
-and EB.fk_usuario = 2;
+and EB.fk_usuario = 2
+and P.codigoProducto = 3;
 
+create procedure ubicaciones 
+@idUsuario int, @idProducto int
+as
+begin
+select B.nombreBodega, Pa.idPasillo, E.letra, N.idNivel, AN.cantidad from AsignacionNivel as AN
+join Nivel as N
+on AN.fk_nivel = N.idNivel
+join Detalle_Entrada as DE
+on AN.fk_detalleEntrada = DE.idDetalleEntrada
+join Producto as P
+on DE.fk_producto = P.codigoProducto
+join TipoCosteo as TC
+on DE.fk_tipoCosteo = TC.idTipoCosteo
+join EntradaBodega as EB
+on DE.fk_entrada = EB.idEntrada
+join Estante as E
+on N.fk_estante = E.letra
+join Pasillo as Pa
+on E.fk_pasillo = Pa.idPasillo
+join Bodega as B
+on Pa.fk_bodega = B.idBodega
+where TC.nombreCosteo = 'Saldo'
+and EB.fk_usuario = @idUsuario
+and P.codigoProducto = @idProducto;
+end;
+
+select * from SalidaBodega;
+
+select * from Detalle_Salida;
+
+select * from AsignacionNivel as AN
+join Nivel as N
+on AN.fk_nivel = N.idNivel
+join Detalle_Entrada as DE
+on AN.fk_detalleEntrada = DE.idDetalleEntrada
+where N.idNivel = 3
+and DE.fk_producto = 1
+and fk_tipoCosteo = 1;
+
+
+create procedure add_DetalleSalida
+@cantidad int, @salida int, @asignacionNivel int
+as 
+begin
+insert into Detalle_Salida values(@cantidad, @salida, @asignacionNivel);
+end;
+
+create procedure searchAsignacionNivel 
+@nivel int, @idProducto int
+as
+begin
+select * from AsignacionNivel as AN
+join Nivel as N
+on AN.fk_nivel = N.idNivel
+join Detalle_Entrada as DE
+on AN.fk_detalleEntrada = DE.idDetalleEntrada
+where N.idNivel = @nivel
+and DE.fk_producto = @idProducto
+and fk_tipoCosteo = 1;
+end;
+
+
+
+
+select Pro.nombre as nombreProducto, DE.precio, P.idPasillo, E.letra, N.idNivel, TC.nombreCosteo, LL.nombreLogica from AsignacionNivel as AN
+join Nivel as N
+on AN.fk_nivel = N.idNivel
+join Estante as E
+on N.fk_estante = E.letra
+join Pasillo as P
+on E.fk_pasillo = P.idPasillo
+join Bodega as B
+on P.fk_bodega = B.idBodega
+join Detalle_Entrada as DE
+on AN.fk_detalleEntrada = DE.idDetalleEntrada
+join Producto as Pro
+on DE.fk_producto = Pro.codigoProducto
+join EntradaBodega as EB
+on DE.fk_entrada = EB.idEntrada
+join TipoCosteo as TC
+on DE.fk_tipoCosteo = TC.idTipoCosteo
+left Join LogicaLote as LL
+on DE.fk_logica = LL.idLogica
+where B.idBodega = 1
+and EB.fk_usuario = 2;

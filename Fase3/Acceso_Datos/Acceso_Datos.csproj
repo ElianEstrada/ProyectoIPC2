@@ -46,6 +46,7 @@
     <Compile Include="ClienteDA.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="DetalleEntradaDA.cs" />
+    <Compile Include="DetalleSalidaDA.cs" />
     <Compile Include="EntradaBodegaDA.cs" />
     <Compile Include="EstanteDA.cs" />
     <Compile Include="NivelDA.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorDA.cs" />
     <Compile Include="SalidaBodegaDA.cs" />
+    <Compile Include="UbicacionDA.cs" />
     <Compile Include="UsuarioOperativoDA.cs" />
   </ItemGroup>
   <ItemGroup>

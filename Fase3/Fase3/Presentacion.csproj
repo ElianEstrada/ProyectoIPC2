@@ -127,6 +127,7 @@
     <Content Include="Views\Entrada\asignarNivel.cshtml" />
     <Content Include="Views\Salida\Salida.cshtml" />
     <Content Include="Views\Salida\DetalleSalida.cshtml" />
+    <Content Include="Views\Salida\ubicaciones.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
