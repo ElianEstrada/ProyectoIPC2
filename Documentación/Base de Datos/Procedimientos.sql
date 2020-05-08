@@ -351,7 +351,7 @@ on DE.fk_logica = LL.idLogica
 where EB.idEntrada =@idEntrada;
 end;
 
-exec show_DetalleEntrada 2;
+exec show_DetalleEntrada 4;
 
 select * from LogicaLote;
 
@@ -520,6 +520,14 @@ begin
 insert into Detalle_Salida values(@cantidad, @salida, @asignacionNivel);
 end;
 
+
+exec add_DetalleSalida 12, 4, 7;
+
+alter table Detalle_Salida add constraint FK_Asignacion foreign key (fk_asignacionNivel) references AsignacionNivel(idAsignacionNivel);
+
+
+select * from AsignacionNivel;
+
 create procedure searchAsignacionNivel 
 @nivel int, @idProducto int
 as
@@ -570,3 +578,78 @@ left Join LogicaLote as LL
 on DE.fk_logica = LL.idLogica
 where B.idBodega = 1
 and EB.fk_usuario = 2;
+
+create procedure invetarioBodega
+@idUsuario int, @idBodega int
+as
+begin
+select Pro.nombre as nombreProducto, DE.precio, P.idPasillo, E.letra, N.idNivel, TC.nombreCosteo, LL.nombreLogica from AsignacionNivel as AN
+join Nivel as N
+on AN.fk_nivel = N.idNivel
+join Estante as E
+on N.fk_estante = E.letra
+join Pasillo as P
+on E.fk_pasillo = P.idPasillo
+join Bodega as B
+on P.fk_bodega = B.idBodega
+join Detalle_Entrada as DE
+on AN.fk_detalleEntrada = DE.idDetalleEntrada
+join Producto as Pro
+on DE.fk_producto = Pro.codigoProducto
+join EntradaBodega as EB
+on DE.fk_entrada = EB.idEntrada
+join TipoCosteo as TC
+on DE.fk_tipoCosteo = TC.idTipoCosteo
+left Join LogicaLote as LL
+on DE.fk_logica = LL.idLogica
+where B.idBodega = @idBodega
+and EB.fk_usuario = @idUsuario;
+end;
+
+exec invetarioBodega 2, 1;
+
+select * from Producto as P
+where P.codigoProducto = 1;
+
+create procedure inventarioProducto
+@idUsuario int, @codigoProducto int
+as
+begin
+select P.codigoProducto, P.codigoBarra, P.nombre, AN.cantidad, DE.precio, N.idNivel, PA.idPasillo, E.letra, B.idBodega, TC.nombreCosteo, LL.nombreLogica from AsignacionNivel as AN
+join Detalle_Entrada as DE
+on AN.fk_detalleEntrada = DE.idDetalleEntrada
+join EntradaBodega as EB
+on DE.fk_entrada = EB.idEntrada
+join Producto as P
+on DE.fk_producto = P.codigoProducto
+join TipoCosteo as TC
+on DE.fk_tipoCosteo = TC.idTipoCosteo
+LEFT join LogicaLote as LL
+on DE.fk_logica = LL.idLogica
+join Nivel as N
+on AN.fk_nivel = N.idNivel
+join Estante as E
+on N.fk_estante = E.letra
+join Pasillo as PA
+on E.fk_pasillo = PA.idPasillo
+join Bodega as B
+on PA.fk_bodega = B.idBodega
+where P.codigoProducto = @codigoProducto
+and EB.fk_usuario = @idUsuario;
+end;
+
+exec inventarioProducto 2, 1;
+
+select * from Producto;
+
+select * from Detalle_Entrada as DE
+join Producto as P 
+on DE.fk_producto = P.codigoProducto
+join EntradaBodega as EB
+on DE.fk_entrada = EB.idEntrada
+where P.codigoProducto = 1 
+and EB.fk_usuario = 2;
+
+
+
+

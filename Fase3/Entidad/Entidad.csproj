@@ -48,6 +48,8 @@
     <Compile Include="DetalleSalida.cs" />
     <Compile Include="EntradaBodega.cs" />
     <Compile Include="Estante.cs" />
+    <Compile Include="InformeBodega.cs" />
+    <Compile Include="InventarioProducto.cs" />
     <Compile Include="Nivel.cs" />
     <Compile Include="Pasillo.cs" />
     <Compile Include="Producto.cs" />

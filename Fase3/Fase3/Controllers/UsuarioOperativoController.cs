@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Web.HtmlReportRender;
 
 namespace Fase3.Controllers
 {
@@ -11,6 +14,8 @@ namespace Fase3.Controllers
     {
 
         UsuarioOperativoLogic usuario = new UsuarioOperativoLogic();
+        ProductoLogic producto = new ProductoLogic();
+
 
         // GET: UsuarioOperativo
         public ActionResult Home()
@@ -55,7 +60,7 @@ namespace Fase3.Controllers
             {
                 if (nuevaPass.Equals(verificarPass))
                 {
-                    if(usuario.updatePassword(email, nuevaPass))
+                    if (usuario.updatePassword(email, nuevaPass))
                     {
                         return Content("<script> alert('Contraseña Actualizada'); " +
                         "window.location.href='Perfil' </script>");
@@ -65,7 +70,7 @@ namespace Fase3.Controllers
                         return Content("<script> alert('No se pudo actualizar la contraseña'); " +
                         "window.location.href='Perfil' </script>");
                     }
-                    
+
                 }
                 else
                 {
@@ -78,6 +83,28 @@ namespace Fase3.Controllers
                 return Content("<script> alert('La contraseña Actual no coincide'); " +
                         "window.location.href='Perfil' </script>");
             }
+        }
+
+
+        public ActionResult inventarioBodega()
+        {
+            return View();
+        }
+
+        public ActionResult verBodega(int idBodega)
+        {
+            return View(producto.inventarioBodega(int.Parse(Session["usuario"].ToString()), idBodega));
+
+        }
+
+        public ActionResult inventarioProducto()
+        {
+            return View();
+        }
+
+        public ActionResult verProducto(int codigoProducto)
+        {
+            return View(producto.inventarioProductos(int.Parse(Session["usuario"].ToString()), codigoProducto));
         }
     }
 }

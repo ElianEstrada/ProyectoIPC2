@@ -164,3 +164,20 @@ D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\obj\D
 \\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\obj\Debug\Presentacion.csproj.CopyComplete
 \\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\obj\Debug\Fase3.dll
 \\DESKTOP-R1QU47N\Elian Laptop\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\obj\Debug\Fase3.pdb
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.CrystalReports.Engine.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportSource.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.Shared.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\stdole.dll
+D:\Documents\Elian\2020\Usac\Primer_Semestre\IPC2\Lab\Fase_III\Fase3\Fase3\bin\CrystalDecisions.Web.dll

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "inventarioProducto";
+    Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
+}
+
+<h2>inventarioProducto</h2>
+
+@using (Html.BeginForm("verProducto", "UsuarioOperativo", FormMethod.Post))
+{
+    <form>
+        <input name="codigoProducto" type="text" placeholder="Código Producto" />
+        <button class="btn red"> Consultar </button>
+    </form>
+}
+

@@ -1,0 +1,44 @@
+﻿@model LinkedList<Entidad.InventarioProducto>
+
+@{
+    ViewBag.Title = "verProducto";
+    Layout = "~/Views/Layauts/BarraNavegacion.cshtml";
+}
+
+<h2>verProducto</h2>
+
+<div class="card">
+    <div class="card-content">
+        <table class="striped">
+            <tr>
+                <th> Código </th>
+                <th> Código de Barra </th>
+                <th> Nombre </th>
+                <th> Cantidad </th>
+                <th> Precio </th>
+                <th> Bodega </th>
+                <th> Pasillo </th>
+                <th> Estante </th>
+                <th> Nivel </th>
+                <th> Costeo </th>
+                <th> Lógica </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @item.codigoProducto </td>
+                    <td> @item.codigoBarras </td>
+                    <td> @item.nombreProducto </td>
+                    <td> @item.cantidad </td>
+                    <td> @(String.Format("{0:c}", Math.Round(item.precio, 2))) </td>
+                    <td> @item.bodega </td>
+                    <td> @item.pasillo </td>
+                    <td> @item.letra </td>
+                    <td> @item.nivel </td>
+                    <td> @item.costeo </td>
+                    <td> @item.logica </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -16,5 +16,14 @@ namespace Logica
             return productoDA.listaProductos(idUsuario);
         }
 
+        public LinkedList<InformeBodega> inventarioBodega(int idUsuario, int idbodega)
+        {
+            return productoDA.informeBodegas(idUsuario, idbodega);
+        }
+
+        public LinkedList<InventarioProducto> inventarioProductos(int idUsuaior, int codigoProducto)
+        {
+            return productoDA.inventarioProductos(idUsuaior, codigoProducto);
+        }
     }
 }
