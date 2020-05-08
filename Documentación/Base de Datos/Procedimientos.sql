@@ -321,6 +321,19 @@ end;
 
 exec modificarPrecio 13.43, 24, 15;
 
+create procedure modificarCantidad
+@cantidad int, @idAsigancion int, @idDetalleEntrada int
+as
+begin
+update AsignacionNivel set cantidad -= @cantidad
+where idAsignacionNivel = @idAsigancion;
+update Detalle_Entrada set cantidad -= @cantidad
+where idDetalleEntrada = @idDetalleEntrada;
+end;
+
+exec modificarCantidad 7, 6, 27;
+
+exec searchAsignacionNivel 1, 1;
 
 create procedure show_DetalleEntrada
 @idEntrada int
@@ -521,8 +534,20 @@ and DE.fk_producto = @idProducto
 and fk_tipoCosteo = 1;
 end;
 
+exec searchAsignacionNivel 3, 1;
 
 
+create procedure buscarDetalle
+@asignacion int
+as
+begin
+select * from AsignacionNivel as AN
+join Detalle_Entrada as DE
+on AN.fk_detalleEntrada = DE.idDetalleEntrada
+where AN.idAsignacionNivel = @asignacion;
+end;
+
+exec buscarDetalle 6;
 
 select Pro.nombre as nombreProducto, DE.precio, P.idPasillo, E.letra, N.idNivel, TC.nombreCosteo, LL.nombreLogica from AsignacionNivel as AN
 join Nivel as N

@@ -33,6 +33,44 @@ namespace Acceso_Datos
 
                 if (filas != 0)
                 {
+                    if (modificarCantidad(cantidad, asignacion, buscarDetalle(asignacion)))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return false;
+
+        }
+
+        public bool modificarCantidad(int cantidad, int idAsignacion, int idEntrada)
+        {
+
+            try
+            {
+
+                cmd = new SqlCommand("modificarCantidad", conexion.abrirConexion());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                cmd.Parameters.AddWithValue("@idAsignacion", idAsignacion);
+                cmd.Parameters.AddWithValue("@idDetalleEntrada", idEntrada);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int filas = reader.RecordsAffected;
+
+                if (filas != 0)
+                {
                     return true;
                 }
 
@@ -46,5 +84,32 @@ namespace Acceso_Datos
 
         }
 
+
+        public int buscarDetalle(int asignacion)
+        {
+
+            try
+            {
+
+                cmd = new SqlCommand("buscarDetalle", conexion.abrirConexion());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@asignacion", asignacion);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return int.Parse(reader["idDetalleEntrada"].ToString());
+                }
+
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+            return 0;
+
+        }
     }
 }
